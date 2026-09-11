@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALAN MARTIN | Video Editor & Motion Designer</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Bebas Neue (Editorial Headline) & Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#06070a',
+              dark: '#0c0d15',
+              card: '#11121d',
+              border: '#202234',
+              violet: '#8b5cf6',
+              cyan: '#06b6d4',
+              pink: '#ec4899',
+              amber: '#f59e0b'
+            }
+          },
+          fontFamily: {
+            headline: ['"Bebas Neue"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom sleek scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #06070a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #23253b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8b5cf6;
+    }
+
+    /* Ambient glowing dark multi-tone mesh gradient background */
+    body {
+      background-color: #06070a;
+      background-image: 
+        radial-gradient(circle at 14% 12%, rgba(139, 92, 246, 0.22) 0%, transparent 42%),
+        radial-gradient(circle at 86% 18%, rgba(6, 182, 212, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.10) 0%, transparent 48%),
+        radial-gradient(circle at 80% 82%, rgba(124, 58, 237, 0.18) 0%, transparent 42%),
+        radial-gradient(circle at 18% 88%, rgba(14, 165, 233, 0.18) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    .glass-nav {
+      background: rgba(6, 7, 10, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .glass-card {
+      background: rgba(17, 18, 29, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(139, 92, 246, 0.45);
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.02em;
+      line-height: 0.88;
+    }
+  </style>
+</head>
+<body class="text-gray-200 font-sans antialiased overflow-x-hidden selection:bg-brand-violet selection:text-white min-h-screen">
+
+  <!-- HEADER NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-brand-border/70 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Monogram -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-violet via-pink-500 to-brand-cyan p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-violet-900/30">
+          <div class="w-full h-full bg-brand-dark rounded-xl flex items-center justify-center">
+            <span class="font-headline text-2xl text-white tracking-wider">AM</span>
+          </div>
+        </div>
+        <div>
+          <div class="font-headline text-2xl tracking-wider text-white flex items-center gap-1">
+            ALAN MARTIN<span class="text-brand-cyan">.</span>
+          </div>
+          <p class="text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1">Video Editor • Motion • Color</p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 font-medium text-xs tracking-wider uppercase text-gray-300">
+        <a href="#about" class="hover:text-white hover:text-brand-cyan transition-colors">About</a>
+        <a href="#videos" class="hover:text-white hover:text-brand-cyan transition-colors">Videos</a>
+        <a href="#gallery" class="hover:text-brand-cyan transition-colors flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-pulse"></span> Gallery
+        </a>
+        <a href="#contact" class="hover:text-white hover:text-brand-cyan transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-pink-600/15 hover:bg-pink-600/30 text-pink-300 border border-pink-500/30 transition-all">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="#contact" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-brand-violet via-purple-500 to-brand-cyan hover:brightness-110 text-white shadow-lg shadow-violet-900/40 transition-all">
+          Get in Touch
+        </a>
+        <!-- Mobile Menu Trigger -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-brand-card border border-brand-border text-gray-300 hover:text-white" aria-label="Toggle menu">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden transition-opacity flex flex-col justify-between p-6">
+    <div>
+      <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-8">
+        <div class="font-headline text-3xl tracking-wider text-white">
+          ALAN MARTIN<span class="text-brand-cyan">.</span>
+        </div>
+        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-2xl p-2" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="flex flex-col gap-6 text-2xl font-headline tracking-widest text-gray-300">
+        <a href="#about" onclick="toggleMobileMenu()" class="hover:text-brand-cyan">01 // About</a>
+        <a href="#videos" onclick="toggleMobileMenu()" class="hover:text-brand-cyan">02 // Videos</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" class="hover:text-brand-cyan text-brand-cyan">03 // Gallery</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-brand-cyan">04 // Contact</a>
+      </nav>
+    </div>
+    <div class="border-t border-brand-border pt-6 flex items-center justify-between text-xs font-mono text-gray-400">
+      <span>Alan Martin • Video Portfolio</span>
+      <div class="flex gap-4 text-base text-white">
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://drive.google.com" target="_blank" aria-label="Google Drive"><i class="fa-brands fa-google-drive"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="relative pt-20">
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
+      <div class="flex flex-wrap items-center gap-2.5 mb-8">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md">
+          <i class="fa-solid fa-layer-group text-brand-cyan text-[11px]"></i> 3+ Years Experience
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md">
+          <i class="fa-solid fa-film text-brand-violet text-[11px]"></i> Dynamic Flow & Velocity Edits
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-500/40 text-xs font-medium text-emerald-400 backdrop-blur-md">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Open for Freelance Projects
+        </span>
+      </div>
+
+      <div class="relative">
+        <h1 class="hero-title text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold text-white uppercase tracking-tight select-none drop-shadow-2xl">
+          PORTFOLIO
+        </h1>
+        <p class="font-sans text-xl sm:text-2xl md:text-3xl text-gray-300 font-semibold tracking-tight -mt-2 sm:-mt-4 md:-mt-6 mb-8 flex items-center gap-2">
+          Video Editor & Motion Designer
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 mb-10">
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center text-xl">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">Instagram Reels</div>
+            <div class="text-[11px] text-gray-400 font-mono">9:16 Vertical High Retention</div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl">
+            <i class="fa-brands fa-google-drive"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">Google Drive 4K Masters</div>
+            <div class="text-[11px] text-gray-400 font-mono">High-Bitrate Direct Feeds</div>
+          </div>
+        </div>
+
+        <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-brand-cyan/15 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-xl">
+            <i class="fa-solid fa-palette"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-white">DaVinci Color Science</div>
+            <div class="text-[11px] text-gray-400 font-mono">Node-Based Film Emulation</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4">
+        <a href="#videos" class="px-8 py-4 rounded-xl bg-white text-black hover:bg-gray-100 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2 shadow-xl hover:scale-[1.02]">
+          <i class="fa-solid fa-play text-brand-violet text-sm"></i>
+          Watch Videos
+        </a>
+        <a href="#gallery" class="px-8 py-4 rounded-xl glass-card text-white hover:bg-white/10 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2">
+          <i class="fa-solid fa-images text-brand-cyan"></i>
+          View Photo Stacks
+        </a>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border/50">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-4">
+          <h2 class="font-headline text-7xl sm:text-8xl md:text-9xl text-white leading-none">
+            ABOUT
+          </h2>
+
+          <div class="mt-6 flex flex-col gap-3 font-mono text-xs text-gray-400">
+            <div class="p-3.5 rounded-xl glass-card">
+              <span class="text-gray-400 block text-[10px] uppercase">Primary NLE Suites</span>
+              <span class="text-white font-semibold">DaVinci Resolve Studio & Premiere Pro</span>
+            </div>
+            <div class="p-3.5 rounded-xl glass-card">
+              <span class="text-gray-400 block text-[10px] uppercase">Motion & VFX</span>
+              <span class="text-white font-semibold">Adobe After Effects & Dynamic Typography</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 space-y-6 text-sm sm:text-base leading-relaxed">
+          <div class="p-8 rounded-2xl glass-card space-y-5">
+            <div class="font-mono text-xs text-brand-cyan font-bold tracking-wider">// CREATIVE PROFILE</div>
+            <p class="text-gray-200 text-lg leading-relaxed font-medium">
+              Backed by over 3 years of hands-on production experience, <strong class="text-white">Alan Martin</strong> delivers as a dedicated <strong class="text-white">Video Editor and Motion Designer</strong>.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              These selected projects embody my core philosophy: where <strong class="text-white">sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism</strong> join together to amplify the emotional depth and narrative impact of any production.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              By pairing <strong class="text-white">strategic pacing and velocity curves</strong> with advanced <strong class="text-white">Motion Design and DaVinci Resolve color science</strong>, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.
+            </p>
+
+            <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs border-t border-brand-border/60">
+              <div>
+                <span class="text-gray-400 block text-[10px]">EXPERIENCE</span>
+                <span class="text-white font-semibold">3+ Years</span>
+              </div>
+              <div>
+                <span class="text-gray-400 block text-[10px]">COLOR PIPELINE</span>
+                <span class="text-brand-cyan font-semibold">DaVinci / ACES</span>
+              </div>
+              <div>
+                <span class="text-gray-400 block text-[10px]">DELIVERY</span>
+                <span class="text-emerald-400 font-semibold">Drive 4K & Reels</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED VIDEOS SECTION -->
+    <section id="videos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand-border/50">
+      <div class="mb-12">
+        <span class="font-mono text-xs uppercase tracking-widest text-brand-violet font-semibold">// TIMELINE SELECTS</span>
+        <h2 class="font-headline text-5xl sm:text-6xl md:text-7xl text-white tracking-wide mt-1">FEATURED VIDEOS</h2>
+        <p class="text-sm text-gray-400 mt-1">Direct Google Drive 4K master streams and vertical Instagram Reels.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
+
+        <!-- Video Card 1 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="drive"
+             data-video-url="https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs/preview"
+             data-video-title="Tokyo Midnight Drift Velocity Edit">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80" alt="Tokyo Midnight Drift Velocity Edit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+              <i class="fa-brands fa-google-drive text-amber-400"></i> Google Drive 4K
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              01:14
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-violet uppercase">Flow & Speed Ramps</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">Tokyo Midnight Drift Velocity Edit</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Surgical match cuts on tire smoke transients, optical flow speed ramping, and layered automotive exhaust stems.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">DaVinci Resolve + AE</span>
+              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
+                Watch Video <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 2 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="instagram"
+             data-video-url="https://www.instagram.com"
+             data-video-title="Hyper-Retention Streetwear Viral Reel (9:16)">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80" alt="Streetwear Viral Reel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-instagram text-base"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-brands fa-instagram text-pink-400"></i> Instagram Reel 9:16
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-emerald-400">
+              Viral Reel
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-pink-400 uppercase">Short-Form Retention</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">Hyper-Retention Streetwear Reel</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Engineered hook in the first 0.8s, kinetic captions, whip pan transitions, and punch-in zoom pacing.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">After Effects • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Open Reel <i class="fa-brands fa-instagram text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 3 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="drive"
+             data-video-url="https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs/preview"
+             data-video-title="CHRONOS Luxury Watch Commercial">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=900&q=80" alt="Chronos Watch Spec" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-amber-300 border border-amber-500/30">
+              Commercial / Spec
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              0:45
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-400 uppercase">Commercial & Motion</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">CHRONOS Luxury Watch Spot</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High dynamic range color mapping, motion-tracked kinetic spec typography, and tactile sound design.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">DaVinci ACES • Premiere</span>
+              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
+                Stream 4K Master <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 4 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="instagram"
+             data-video-url="https://www.instagram.com"
+             data-video-title="Nordic Horizon Cinematic Reel">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80" alt="Cinematic Travel Reel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-instagram text-base"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-brands fa-instagram text-pink-400"></i> Instagram 9:16
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              0:30
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-pink-400 uppercase">Creator Flow</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">Nordic Horizon Cinematic Reel</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Seamless camera whip transitions matching ambient soundscapes. Built with endless looping for social algorithms.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">DaVinci Resolve • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Watch Reel <i class="fa-brands fa-instagram text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 5 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="drive"
+             data-video-url="https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs/preview"
+             data-video-title="Night Hunter Flow Speed Ramp Master">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="Night Hunter Flow Edit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30">
+              Flow & Velocity
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              01:45
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-violet uppercase">Velocity Mapping</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">Night Hunter Flow Speed Ramp</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Speed curves matched mathematically to phonk audio transients with localized motion blur and grain.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">Premiere + After Effects</span>
+              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
+                Stream 4K <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 6 -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="drive"
+             data-video-url="https://drive.google.com/file/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs/preview"
+             data-video-title="VALKYRIE Editorial Apparel Promo">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80" alt="Valkyrie Apparel Spot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-purple-300 border border-purple-500/30">
+              Commercial / Fashion
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              0:50
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-purple-400 uppercase">Editorial Cut</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-purple-400 transition-colors mt-0.5">VALKYRIE Editorial Apparel Promo</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High contrast film emulation with customized 35mm grain, lens flare textures, and editorial kinetic titles.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">DaVinci Resolve Studio</span>
+              <span class="text-purple-400 group-hover:underline flex items-center gap-1">
+                Stream Master <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PHOTO STACK GALLERY (NATIVE RATIO + 2D FLY-OUT ENGINE) -->
+    <section id="gallery" class="py-24 border-t border-white/5 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <p class="text-xs uppercase tracking-[0.3em] text-cyan-400 font-mono mb-2">Graded Stills & Stacks</p>
+          <h2 class="font-headline text-6xl md:text-8xl tracking-wide text-white">PHOTO GALLERY</h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-2 font-mono">
+            <span class="text-brand-cyan">Single tap</span> to view full uncropped &bull; <span class="text-brand-violet">Double tap</span> to send to back
+          </p>
+        </div>
+
+        <!-- 2D Gallery Stage (True Native Proportions) -->
+        <div class="relative w-full max-w-2xl mx-auto min-h-[460px] md:min-h-[520px] flex items-center justify-center select-none">
+          <div id="photo-stack-container" class="relative w-full h-full flex items-center justify-center">
+            <!-- Native uncropped photos render here -->
+          </div>
+        </div>
+
+        <!-- Navigation Buttons & Counter -->
+        <div class="flex items-center justify-center gap-6 mt-12">
+          <button id="stack-prev-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
+            ← PREV
+          </button>
+          <span id="stack-counter" class="text-xs font-mono text-zinc-400 tracking-widest">1 / 5</span>
+          <button id="stack-next-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
+            NEXT →
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FULL VIEW LIGHTBOX MODAL -->
+    <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-4 sm:p-8 transition-opacity" onclick="closeLightbox()">
+      <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+        <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-gray-400 hover:text-white text-2xl font-mono p-2 transition-colors" aria-label="Close Lightbox">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightbox-img" src="" alt="Full view uncropped still" class="max-h-[78vh] w-auto max-w-full rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] border border-white/15 object-contain" />
+        <div class="mt-4 text-center">
+          <h3 id="lightbox-title" class="font-headline text-2xl sm:text-3xl text-white tracking-wider"></h3>
+          <p class="text-xs font-mono text-zinc-400 mt-1">Native Intrinsic Aspect Ratio &bull; Click anywhere to dismiss</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand-border/50">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-mono text-xs uppercase tracking-widest text-brand-cyan font-semibold">// START A COLLABORATION</span>
+          <h2 class="font-headline text-5xl sm:text-6xl text-white">GET IN TOUCH</h2>
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+            Need a dynamic flow edit, viral Instagram Reel, or a Google Drive 4K master grade? Send over your project details, dead-lines, and footage links.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="p-4 rounded-xl glass-card flex items-center justify-between">
+              <div>
+                <span class="block text-[10px] font-mono text-gray-400 uppercase">Direct Email</span>
+                <span id="alan-email" class="text-white font-mono font-semibold text-sm">alanmartin.edits@gmail.com</span>
+              </div>
+              <button onclick="copyAlanEmail()" id="email-copy-btn" class="px-3 py-1.5 rounded-lg bg-brand-border/80 hover:bg-brand-violet hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5">
+                <i class="fa-regular fa-clone"></i>
+                <span id="copy-status">Copy</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-3 pt-2">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-pink-400 hover:border-pink-500 hover:bg-pink-600/10 text-xs font-mono transition-all">
+                <i class="fa-brands fa-instagram text-base"></i>
+                <span>Instagram Profile</span>
+              </a>
+              <a href="https://drive.google.com" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-amber-400 hover:border-amber-500 hover:bg-amber-600/10 text-xs font-mono transition-all">
+                <i class="fa-brands fa-google-drive text-base"></i>
+                <span>Google Drive Folder</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8">
+          <form id="alan-brief-form" onsubmit="handleBriefSubmit(event)" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Your Name</label>
+                <input type="text" name="name" required placeholder="Alex Silva" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Email Address</label>
+                <input type="email" name="email" required placeholder="alex@studio.com" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Google Drive / Brief Link (Optional)</label>
+              <input type="url" name="link" id="footage-link-input" placeholder="https://drive.google.com/drive/folders/... or @instagram_handle" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Project Scope / Details</label>
+              <textarea name="message" id="brief-message-input" rows="4" required placeholder="Tell me about your desired pacing, reference cuts, music direction, or deadline..." class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-cyan hover:brightness-110 text-white font-headline text-xl tracking-wider uppercase transition-all shadow-lg shadow-violet-900/40">
+              Send Message to Alan Martin
+            </button>
+          </form>
+
+          <div id="brief-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-sm font-mono flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span>Message sent! Alan Martin will review your inquiry and get back to you shortly.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MINIMAL FOOTER -->
+  <footer class="py-12 border-t border-brand-border/60 bg-brand-black/90 relative z-10 text-center">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-brand-violet animate-pulse"></span>
+        <span class="w-2 h-2 rounded-full bg-brand-cyan"></span>
+      </div>
+      <p class="text-xs uppercase tracking-widest text-gray-400 font-mono">
+        © 2026 ALAN MARTIN. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div id="video-player-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 transition-opacity">
+    <div class="relative w-full max-w-4xl bg-brand-card rounded-2xl overflow-hidden border border-brand-border shadow-2xl flex flex-col">
+      <div class="px-6 py-4 border-b border-brand-border flex items-center justify-between bg-brand-dark">
+        <div class="flex items-center gap-3">
+          <span id="player-type-badge" class="font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-brand-violet text-white">Google Drive</span>
+          <h3 id="player-title" class="font-headline text-2xl text-white tracking-wide">Video Title</h3>
+        </div>
+        <button onclick="closeModal('video-player-modal')" class="text-gray-400 hover:text-white text-xl p-1 transition-colors" aria-label="Close video player">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="relative w-full bg-black flex items-center justify-center overflow-hidden" style="min-height: 400px; max-height: 75vh;">
+        <div id="player-embed-container" class="w-full h-full aspect-video flex items-center justify-center"></div>
+      </div>
+
+      <div class="px-6 py-3 bg-brand-dark/90 border-t border-brand-border flex items-center justify-between text-xs font-mono text-gray-400">
+        <span id="player-instructions">Google Drive preview mode active</span>
+        <a id="player-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline flex items-center gap-1">
+          Open Original Source <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------
+    // PHOTO STACK DATA & 2D ENGINE (NO FIXED RATIOS, NATIVE FIT)
+    // -------------------------------------------------------------
+    const photoStackData = [
+      {
+        id: 1,
+        title: "Portrait Mood",
+        src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80",
+        rot2D: -4
+      },
+      {
+        id: 2,
+        title: "Tokyo Neon Streets",
+        src: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
+        rot2D: 5
+      },
+      {
+        id: 3,
+        title: "Editorial Lighting",
+        src: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80",
+        rot2D: -5
+      },
+      {
+        id: 4,
+        title: "Anamorphic Cinematic Cut",
+        src: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1400&q=80",
+        rot2D: 3
+      },
+      {
+        id: 5,
+        title: "Golden Hour Grade",
+        src: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80",
+        rot2D: -2
+      }
+    ];
+
+    let currentOrder = [...photoStackData.keys()];
+    let clickTimer = null;
+    let isAnimating = false;
+
+    function renderStack() {
+      const container = document.getElementById("photo-stack-container");
+      if (!container) return;
+      container.innerHTML = "";
+
+      const total = currentOrder.length;
+      const counterElem = document.getElementById("stack-counter");
+      if (counterElem) {
+        counterElem.innerText = `${currentOrder[0] + 1} / ${total}`;
+      }
+
+      currentOrder.forEach((itemIndex, stackPos) => {
+        const photo = photoStackData[itemIndex];
+        const isTop = stackPos === 0;
+
+        const card = document.createElement("div");
+        card.id = `card-slot-${stackPos}`;
+        // Max bounds with flex auto-sizing preserves native aspect ratio without any letterbox or cropping
+        card.className = `absolute select-none rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.85)] border border-white/10 transition-all duration-500 ease-out flex items-center justify-center ${
+          isTop ? "cursor-pointer hover:border-brand-cyan/70 hover:scale-[1.01]" : "pointer-events-none"
+        }`;
+        card.style.zIndex = total - stackPos;
+
+        // Pure 2D transforms
+        if (isTop) {
+          card.style.transform = `translate(0px, 0px) rotate(0deg) scale(1)`;
+        } else {
+          const scale = Math.max(0.85, 1 - stackPos * 0.04);
+          const offsetY = stackPos * 9;
+          card.style.transform = `translate(0px, ${offsetY}px) rotate(${photo.rot2D}deg) scale(${scale})`;
+        }
+
+        // Native uncropped image element
+        card.innerHTML = `
+          <img 
+            src="${photo.src}" 
+            alt="${photo.title}" 
+            draggable="false"
+            class="w-auto h-auto max-w-[85vw] max-h-[440px] md:max-h-[480px] object-contain block rounded-2xl pointer-events-none"
+          />
+        `;
+
+        if (isTop) {
+          card.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (isAnimating) return;
+
+            if (clickTimer == null) {
+              clickTimer = setTimeout(() => {
+                clickTimer = null;
+                openLightbox(photo);
+              }, 250);
+            } else {
+              clearTimeout(clickTimer);
+              clickTimer = null;
+              slideCardToBack(card);
+            }
+          });
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    function slideCardToBack(card) {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      // Phase 1: Slide card outside to the right on flat 2D plane
+      card.style.transition = "transform 0.32s cubic-bezier(0.2, 0.9, 0.3, 1), opacity 0.32s ease";
+      card.style.transform = "translate(380px, -20px) rotate(14deg) scale(0.95)";
+
+      setTimeout(() => {
+        // Phase 2: Send behind all cards
+        card.style.zIndex = "1";
+
+        // Shift top item to the back of the order array
+        const topItem = currentOrder.shift();
+        currentOrder.push(topItem);
+
+        // Phase 3: Slide back into the stack at the very bottom
+        const total = currentOrder.length;
+        const lastPos = total - 1;
+        const photo = photoStackData[topItem];
+        const scale = Math.max(0.85, 1 - lastPos * 0.04);
+        const offsetY = lastPos * 9;
+
+        card.style.transform = `translate(0px, ${offsetY}px) rotate(${photo.rot2D}deg) scale(${scale})`;
+
+        setTimeout(() => {
+          isAnimating = false;
+          renderStack();
+        }, 320);
+      }, 320);
+    }
+
+    function nextCard() {
+      if (isAnimating) return;
+      const topCard = document.getElementById("card-slot-0");
+      if (topCard) {
+        slideCardToBack(topCard);
+      } else {
+        currentOrder.push(currentOrder.shift());
+        renderStack();
+      }
+    }
+
+    function prevCard() {
+      if (isAnimating) return;
+      currentOrder.unshift(currentOrder.pop());
+      renderStack();
+    }
+
+    function openLightbox(photo) {
+      const modal = document.getElementById("gallery-lightbox");
+      const img = document.getElementById("lightbox-img");
+      const title = document.getElementById("lightbox-title");
+
+      if (!modal || !img) return;
+      img.src = photo.src;
+      img.alt = photo.title;
+      if (title) title.innerText = photo.title;
+
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById("gallery-lightbox");
+      if (modal) modal.classList.add("hidden");
+      document.body.style.overflow = "";
+    }
+
+    // -------------------------------------------------------------
+    // VIDEO CARDS & MODAL CONTROLS
+    // -------------------------------------------------------------
+    function initVideoCards() {
+      const cards = document.querySelectorAll('.video-project-card');
+      cards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          const type = card.getAttribute('data-video-type');
+          const url = card.getAttribute('data-video-url');
+          const title = card.getAttribute('data-video-title');
+          openVideoPlayer(type, url, title);
+        });
+      });
+    }
+
+    function openVideoPlayer(type, url, title) {
+      const titleElem = document.getElementById('player-title');
+      const badgeElem = document.getElementById('player-type-badge');
+      const container = document.getElementById('player-embed-container');
+      const directLink = document.getElementById('player-direct-link');
+      const instructions = document.getElementById('player-instructions');
+
+      if (titleElem) titleElem.textContent = title;
+      if (directLink) directLink.href = url;
+
+      if (type === 'drive') {
+        if (badgeElem) {
+          badgeElem.textContent = "Google Drive 4K Master";
+          badgeElem.className = "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30";
+        }
+        if (instructions) instructions.textContent = "Streaming high-bitrate master from Google Drive";
+        if (container) {
+          container.innerHTML = `<iframe src="${url}" class="w-full h-full border-0 rounded-xl" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        }
+      } else if (type === 'instagram') {
+        if (badgeElem) {
+          badgeElem.textContent = "Instagram Reel (9:16)";
+          badgeElem.className = "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 border border-pink-500/30";
+        }
+        if (instructions) instructions.textContent = "Vertical 9:16 high-retention reel";
+        if (container) {
+          container.innerHTML = `
+            <div class="relative w-full max-w-[320px] aspect-[9/16] bg-brand-dark rounded-2xl overflow-hidden border border-brand-border flex flex-col items-center justify-center p-6 text-center shadow-2xl">
+              <div class="w-16 h-16 rounded-full bg-pink-600 text-white flex items-center justify-center text-2xl mb-4 shadow-lg shadow-pink-900/40">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+              <h4 class="font-headline text-2xl text-white mb-2">${title}</h4>
+              <p class="text-xs text-gray-400 font-mono mb-6">Designed specifically for Instagram Reels & Stories algorithms.</p>
+              <a href="${url}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-mono text-xs font-semibold hover:brightness-110 transition-all flex items-center gap-2">
+                <i class="fa-brands fa-instagram"></i> View Live on Instagram
+              </a>
+            </div>
+          `;
+        }
+      }
+
+      openModal('video-player-modal');
+    }
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      drawer.classList.toggle('hidden');
+    }
+
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      if (id === 'video-player-modal') {
+        const container = document.getElementById('player-embed-container');
+        if (container) container.innerHTML = '';
+      }
+    }
+
+    function copyAlanEmail() {
+      const email = document.getElementById('alan-email').innerText;
+      const copyStatus = document.getElementById('copy-status');
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        copyStatus.textContent = 'Copied!';
+        setTimeout(() => { copyStatus.textContent = 'Copy'; }, 2000);
+      } catch (err) {
+        copyStatus.textContent = 'Copied';
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    function handleBriefSubmit(e) {
+      const success = document.getElementById('brief-success');
+      if (success) {
+        success.classList.remove('hidden');
+        setTimeout(() => { success.classList.add('hidden'); }, 6000);
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal('video-player-modal');
+        closeLightbox();
+      }
+      if (e.key === 'ArrowRight') nextCard();
+      if (e.key === 'ArrowLeft') prevCard();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderStack();
+      document.getElementById("stack-next-btn")?.addEventListener("click", nextCard);
+      document.getElementById("stack-prev-btn")?.addEventListener("click", prevCard);
+      initVideoCards();
+    });
+  </script>
+</body>
+</html>
