@@ -93,6 +93,14 @@
       letter-spacing: 0.02em;
       line-height: 0.88;
     }
+
+    /* Suppress duplicate mobile system overlay buttons */
+    video::-webkit-media-controls-fullscreen-button {
+      display: none;
+    }
+    video::-webkit-media-controls-picture-in-picture-button {
+      display: none;
+    }
   </style>
 </head>
 <body class="text-gray-200 font-sans antialiased overflow-x-hidden selection:bg-brand-violet selection:text-white min-h-screen">
@@ -285,57 +293,59 @@
       <div class="mb-12">
         <span class="font-mono text-xs uppercase tracking-widest text-brand-violet font-semibold">// TIMELINE SELECTS</span>
         <h2 class="font-headline text-5xl sm:text-6xl md:text-7xl text-white tracking-wide mt-1">FEATURED VIDEOS</h2>
-        <p class="text-sm text-gray-400 mt-1">Direct master streams and borderless vertical video playback.</p>
+        <p class="text-sm text-gray-400 mt-1">Direct master streams and borderless video playback.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
 
-        <!-- Video Card 1 -->
+        <!-- Video Card 1 (16:9 Widescreen) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1tYzczSxRTkkBIzKT1GegyY3eCxYtqKT4/preview"
-             data-video-title="Tokyo Midnight Drift Velocity Edit">
+             data-video-type="video"
+             data-aspect="16/9"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789132942/DIGNITO_Title_Animation.mp4"
+             data-video-title="DIGNITO JAPANESE ART TITLE INTRO">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=900&q=80" alt="Tokyo Midnight Drift Velocity Edit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_auto,f_auto,q_auto/v1789132942/DIGNITO_Title_Animation.jpg" alt="Dignito Title Animation" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                 <i class="fa-solid fa-play text-sm ml-0.5"></i>
               </span>
             </div>
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
-              <i class="fa-solid fa-film text-cyan-400"></i> 4K Master
+              <i class="fa-solid fa-film text-cyan-400"></i> Animation / 16:9
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              01:14
+              0:11
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-brand-violet uppercase">Flow & Speed Ramps</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">Tokyo Midnight Drift Velocity Edit</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Surgical match cuts on tire smoke transients, optical flow speed ramping, and layered automotive exhaust stems.</p>
+            <span class="text-xs font-mono text-brand-violet uppercase">LOGO ANIMATION CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">DIGNITO JAPANESE ART TITLE INTRO</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Stylized Japanese woodblock and parchment art sequence featuring textured ink reveals, animated samurai silhouettes, dynamic camera whips, and geometric dance illustration transitions.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci Resolve + AE</span>
+              <span class="text-gray-400">Adobe After Effects</span>
               <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
-                Watch Video <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                Watch Video <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 2 (UPDATED TO CLOUDINARY DIRECT BORDERLESS VIDEO) -->
+        <!-- Video Card 2 (9:16 Vertical Reel) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
+             data-aspect="9/16"
              data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789126713/Mad_Rabbit__Client_Video_2.mp4"
-             data-video-title="Mad Rabbit Client Video - Retention Master (9:16)">
+             data-video-title="Mad Rabbit Client Reel (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80" alt="Mad Rabbit Client Video" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_7,f_auto,q_auto/v1789126713/Mad_Rabbit__Client_Video_2.jpg" alt="Mad Rabbit Client Video" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                 <i class="fa-solid fa-play text-base ml-0.5"></i>
               </span>
             </div>
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
-              <i class="fa-solid fa-bolt text-pink-400"></i> Borderless Master 9:16
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-emerald-400">
               Client Reel
@@ -348,203 +358,211 @@
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Direct Master • 9:16</span>
               <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Play Reel <i class="fa-solid fa-play text-[10px]"></i>
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 3 -->
+        <!-- Video Card 3 (9:16 Vertical Reel) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1L_AB4JPjmpCX5pevftW3Ba36Sb8c-O4o/preview"
-             data-video-title="CHRONOS Luxury Watch Commercial">
+             data-video-type="video"
+             data-aspect="9/16"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789132942/Documentry_style.mp4"
+             data-video-title="HISTORICAL & CRIME MOTION GRAPHICS (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=900&q=80" alt="Chronos Watch Spec" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-play text-sm ml-0.5"></i>
-              </span>
-            </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-amber-300 border border-amber-500/30">
-              Commercial / Spec
-            </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:45
-            </span>
-          </div>
-          <div class="p-5">
-            <span class="text-xs font-mono text-amber-400 uppercase">Commercial & Motion</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">CHRONOS Luxury Watch Spot</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High dynamic range color mapping, motion-tracked kinetic spec typography, and tactile sound design.</p>
-            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci ACES • Premiere</span>
-              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
-                Stream 4K Master <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Video Card 4 -->
-        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1gZQ_nzWDhLexLJuv-4iDQWNQKYmXVMeL/preview"
-             data-video-title="Nordic Horizon Cinematic Reel">
-          <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=900&q=80" alt="Cinematic Travel Reel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_20,f_auto,q_auto/v1789132942/Documentry_style.jpg" alt="Documentary Motion Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                 <i class="fa-solid fa-play text-base ml-0.5"></i>
               </span>
             </div>
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
-              <i class="fa-solid fa-film text-pink-400"></i> Video Master
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:30
+              0:29
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-pink-400 uppercase">Creator Flow</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">Nordic Horizon Cinematic Reel</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Seamless camera whip transitions matching ambient soundscapes. Built with endless looping for social algorithms.</p>
+            <span class="text-xs font-mono text-pink-400 uppercase">DOCUMENTARY REEL CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">HISTORICAL & CRIME MOTION GRAPHICS</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Multi-layered documentary visual sequence featuring 2.5D parallax photo cutouts, animated vintage cartography, typography paper rips, and dynamic archival newspaper highlights.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci Resolve Studio</span>
+              <span class="text-gray-400">Adobe After Effects • 9:16</span>
               <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Stream Master <i class="fa-solid fa-play text-[10px]"></i>
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 5 -->
+        <!-- Video Card 4 (16:9 Widescreen) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1oCAOVacQqC1vTmhQsetG5iWaqPkQpXMt/preview"
-             data-video-title="Night Hunter Flow Speed Ramp Master">
+             data-video-type="video"
+             data-aspect="16/9"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789132941/Talking_head_Sample_video.mp4"
+             data-video-title="SOLVING THE AFTERNOON SLUMP">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=80" alt="Night Hunter Flow Edit" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_auto,f_auto,q_auto/v1789132941/Talking_head_Sample_video.jpg" alt="Afternoon Slump" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
                 <i class="fa-solid fa-play text-sm ml-0.5"></i>
               </span>
             </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30">
-              Flow & Velocity
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-film text-cyan-400"></i> Health & Lifestyle / 16:9
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              01:45
+              0:16
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-brand-violet uppercase">Velocity Mapping</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">Night Hunter Flow Speed Ramp</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Speed curves matched mathematically to phonk audio transients with localized motion blur and grain.</p>
+            <span class="text-xs font-mono text-brand-violet uppercase">DOCUMENTARY EXPLAINER CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">SOLVING THE AFTERNOON SLUMP</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Narrative-driven explainer combining film grain textures, dynamic light burn transitions, custom animated vector icons, and cinematic warm-tone grading.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">Premiere + After Effects</span>
+              <span class="text-gray-400">Adobe After Effects</span>
               <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
-                Stream 4K <i class="fa-solid fa-play text-[10px]"></i>
+                Watch Video <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 6 -->
+        <!-- Video Card 5 (9:16 Vertical Reel) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1A2kFmV0_Z9-Mqsdo111D38RhHMsg7Ptb/preview"
-             data-video-title="VALKYRIE Editorial Apparel Promo">
+             data-video-type="video"
+             data-aspect="9/16"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789141444/Property_7_1_prob4.mp4"
+             data-video-title="THE COVES AT WESLACO TOWNHOMES (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80" alt="Valkyrie Apparel Spot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_15,f_auto,q_auto/v1789141444/Property_7_1_prob4.jpg" alt="Weslaco Townhomes Promo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-base ml-0.5"></i>
               </span>
             </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-purple-300 border border-purple-500/30">
-              Commercial / Fashion
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:50
+              0:48
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-purple-400 uppercase">Editorial Cut</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-purple-400 transition-colors mt-0.5">VALKYRIE Editorial Apparel Promo</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High contrast film emulation with customized 35mm grain, lens flare textures, and editorial kinetic titles.</p>
+            <span class="text-xs font-mono text-pink-400 uppercase">LISTING PROMO CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">THE COVES AT WESLACO TOWNHOMES</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High-energy real estate listing promo with kinetic offer callouts, speed ramps, smooth whip transitions, and clean modern commercial interior grading.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci Resolve Studio</span>
-              <span class="text-purple-400 group-hover:underline flex items-center gap-1">
-                Stream Master <i class="fa-solid fa-play text-[10px]"></i>
+              <span class="text-gray-400">Adobe After Effects • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
- <!-- Video Card 7 -->
+        <!-- Video Card 6 (9:16 Vertical Reel) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1c0WZJEgKINHzjR5N9_ktQxC82elkABxS/preview"
-             data-video-title="VALKYRIE Editorial Apparel Promo">
+             data-video-type="video"
+             data-aspect="9/16"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789141393/Talking_Head_Video_4_1_prob4.mp4"
+             data-video-title="PURPLE 7 SALON OFFERS PROMO (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80" alt="Valkyrie Apparel Spot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_25.5,f_auto,q_auto/v1789141393/Talking_Head_Video_4_1_prob4.jpg" alt="Purple 7 Salon Spot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-base ml-0.5"></i>
               </span>
             </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-purple-300 border border-purple-500/30">
-              Commercial / Fashion
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:50
+              0:35
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-purple-400 uppercase">Editorial Cut</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-purple-400 transition-colors mt-0.5">VALKYRIE Editorial Apparel Promo</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High contrast film emulation with customized 35mm grain, lens flare textures, and editorial kinetic titles.</p>
+            <span class="text-xs font-mono text-pink-400 uppercase">PROMOTIONAL CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">PURPLE 7 SALON OFFERS PROMO</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High-end salon promotional walkthrough featuring luminous neon text treatments, smooth light-leak transitions, elegant handheld movement, and modern commercial color finishing.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci Resolve Studio</span>
-              <span class="text-purple-400 group-hover:underline flex items-center gap-1">
-                Stream Master <i class="fa-solid fa-play text-[10px]"></i>
+              <span class="text-gray-400">Adobe After Effects • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
 
-<!-- Video Card 7 -->
+        <!-- Video Card 7 (9:16 Vertical Reel) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-             data-video-type="drive"
-             data-video-url="https://drive.google.com/file/d/1ZhYF6HOV7hW8B7V-tmVmXOR3Ohgw6BMj/preview"
-             data-video-title="VALKYRIE Editorial Apparel Promo">
+             data-video-type="video"
+             data-aspect="9/16"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789141426/Real-estate_Sample_Video_3_1_prob4.mp4"
+             data-video-title="NEWPORT BEACH WATERFRONT TOUR (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80" alt="Valkyrie Apparel Spot" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_19,f_auto,q_auto/v1789141426/Real-estate_Sample_Video_3_1_prob4.jpg" alt="Newport Beach Tour" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-play text-sm ml-0.5"></i>
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-base ml-0.5"></i>
               </span>
             </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-purple-300 border border-purple-500/30">
-              Commercial / Fashion
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
             <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:50
+              0:39
             </span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-purple-400 uppercase">Editorial Cut</span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-purple-400 transition-colors mt-0.5">VALKYRIE Editorial Apparel Promo</h3>
-            <p class="text-xs text-gray-400 mt-2 line-clamp-2">High contrast film emulation with customized 35mm grain, lens flare textures, and editorial kinetic titles.</p>
+            <span class="text-xs font-mono text-pink-400 uppercase">PROPERTY TOUR CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">NEWPORT BEACH WATERFRONT TOUR</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Dynamic luxury home walkthrough featuring kinetic typography, seamless warp whip transitions, high-energy beat sync, and natural light interior grading.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
-              <span class="text-gray-400">DaVinci Resolve Studio</span>
-              <span class="text-purple-400 group-hover:underline flex items-center gap-1">
-                Stream Master <i class="fa-solid fa-play text-[10px]"></i>
+              <span class="text-gray-400">Adobe After Effects • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
               </span>
             </div>
           </div>
         </div>
+
+        <!-- Video Card 8 (9:16 Vertical Reel) -->
+        <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+             data-video-type="video"
+             data-aspect="9/16"
+             data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789141473/Talking_head_video__1_prob4.mp4"
+             data-video-title="AI SHOPLIFTING DETECTION EXPLAINER (9:16)">
+          <div class="relative aspect-video overflow-hidden bg-brand-dark">
+            <img src="https://res.cloudinary.com/qnfityal/video/upload/so_40,f_auto,q_auto/v1789141473/Talking_head_video__1_prob4.jpg" alt="AI Detection Explainer" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-base ml-0.5"></i>
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
+            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
+              0:41
+            </span>
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-pink-400 uppercase">EXPLAINER CUT</span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">AI SHOPLIFTING DETECTION EXPLAINER</h3>
+            <p class="text-xs text-gray-400 mt-2 line-clamp-2">Dynamic talking head breakdown with kinetic typography, store HUD overlays, split-screen retail surveillance feeds, and animated motion graphics.</p>
+            <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
+              <span class="text-gray-400">Adobe After Effects • 9:16</span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
+                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
       </div>
     </section>
@@ -573,7 +591,7 @@
           <button id="stack-prev-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
             ← PREV
           </button>
-          <span id="stack-counter" class="text-xs font-mono text-zinc-400 tracking-widest">1 / 5</span>
+          <span id="stack-counter" class="text-xs font-mono text-zinc-400 tracking-widest">1 / 6</span>
           <button id="stack-next-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
             NEXT →
           </button>
@@ -688,27 +706,27 @@
     </div>
   </footer>
 
-  <!-- VIDEO PLAYER MODAL -->
-  <div id="video-player-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-6 transition-opacity">
+  <!-- VIDEO PLAYER MODAL (RESPONSIVE EDGE-TO-EDGE FRAME) -->
+  <div id="video-player-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 transition-opacity">
     <div class="relative w-full max-w-4xl bg-brand-card rounded-2xl overflow-hidden border border-brand-border shadow-2xl flex flex-col">
-      <div class="px-6 py-4 border-b border-brand-border flex items-center justify-between bg-brand-dark">
+      <div class="px-5 py-3.5 border-b border-brand-border flex items-center justify-between bg-brand-dark">
         <div class="flex items-center gap-3">
           <span id="player-type-badge" class="font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-brand-violet text-white">Video Stream</span>
-          <h3 id="player-title" class="font-headline text-2xl text-white tracking-wide">Video Title</h3>
+          <h3 id="player-title" class="font-headline text-xl sm:text-2xl text-white tracking-wide truncate max-w-[200px] sm:max-w-md">Video Title</h3>
         </div>
         <button onclick="closeModal('video-player-modal')" class="text-gray-400 hover:text-white text-xl p-1 transition-colors" aria-label="Close video player">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <div class="relative w-full bg-black flex items-center justify-center overflow-hidden" style="min-height: 520px; max-height: 82vh;">
+      <div class="relative w-full bg-black flex items-center justify-center overflow-hidden max-h-[82vh]">
         <div id="player-embed-container" class="w-full h-full flex items-center justify-center p-0"></div>
       </div>
 
-      <div class="px-6 py-3 bg-brand-dark/90 border-t border-brand-border flex items-center justify-between text-xs font-mono text-gray-400">
-        <span id="player-instructions">Master stream preview mode active</span>
+      <div class="px-5 py-2.5 bg-brand-dark/90 border-t border-brand-border flex items-center justify-between text-[11px] sm:text-xs font-mono text-gray-400">
+        <span id="player-instructions">Master stream active</span>
         <a id="player-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline flex items-center gap-1">
-          Open Original Source <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          Open Source <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
         </a>
       </div>
     </div>
@@ -718,7 +736,7 @@
     // -------------------------------------------------------------
     // PHOTO STACK DATA & 2D ENGINE (NO FIXED RATIOS, NATIVE FIT)
     // -------------------------------------------------------------
-   const photoStackData = [
+    const photoStackData = [
       {
         id: 1,
         title: "Portrait Color Master",
@@ -754,15 +772,14 @@
         title: "Editorial Fashion Still",
         src: "https://lh3.googleusercontent.com/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n",
         rot2D: 6
-      },
-
+      }
     ];
 
     let currentOrder = [...photoStackData.keys()];
     let clickTimer = null;
     let isAnimating = false;
 
-function updateCardTransforms() {
+    function updateCardTransforms() {
       const total = currentOrder.length;
       const counterElem = document.getElementById("stack-counter");
       if (counterElem) {
@@ -778,7 +795,7 @@ function updateCardTransforms() {
 
         card.style.zIndex = total - stackPos;
         
-        // Fluid easing curve: smooth rotation & scale ramp like keyframe bezier
+        // Fluid easing curve: smooth rotation & scale ramp
         card.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease";
 
         if (isTop) {
@@ -844,18 +861,21 @@ function updateCardTransforms() {
       isAnimating = true;
 
       const topCard = document.getElementById(`photo-card-${topCardIdx}`);
+      if (!topCard) {
+        isAnimating = false;
+        return;
+      }
       
       // Step 1: Fly top card out to the side
       topCard.style.transition = "transform 0.4s cubic-bezier(0.32, 0, 0.67, 0), opacity 0.35s ease";
       topCard.style.transform = "translate3d(360px, -20px, 0px) rotate(14deg) scale(0.95)";
       topCard.style.opacity = "0.5";
 
-      // Step 2: At frame midpoint, cycle order so the card behind smoothly rotates straight
+      // Step 2: At midpoint, cycle order so the card behind rotates straight smoothly
       setTimeout(() => {
         const popped = currentOrder.shift();
         currentOrder.push(popped);
         
-        // This triggers the smooth easing from -4deg / +5deg to straight 0deg
         updateCardTransforms();
 
         setTimeout(() => {
@@ -875,12 +895,6 @@ function updateCardTransforms() {
       currentOrder.unshift(currentOrder.pop());
       updateCardTransforms();
       setTimeout(() => { isAnimating = false; }, 600);
-    }
-
-    function prevCard() {
-      if (isAnimating) return;
-      currentOrder.unshift(currentOrder.pop());
-      renderStack();
     }
 
     function openLightbox(photo) {
@@ -904,22 +918,22 @@ function updateCardTransforms() {
     }
 
     // -------------------------------------------------------------
-    // VIDEO CARDS & INLINE CLOUDINARY + DRIVE MODAL
+    // VIDEO CARDS & AUTOMATIC 16:9 vs 9:16 NATIVE STREAM PLAYER
     // -------------------------------------------------------------
     function initVideoCards() {
       const cards = document.querySelectorAll('.video-project-card');
       cards.forEach(card => {
         card.addEventListener('click', (e) => {
           e.preventDefault();
-          const type = card.getAttribute('data-video-type');
           const url = card.getAttribute('data-video-url');
           const title = card.getAttribute('data-video-title');
-          openVideoPlayer(type, url, title);
+          const aspect = card.getAttribute('data-aspect') || '16/9';
+          openVideoPlayer(url, title, aspect);
         });
       });
     }
 
-    function openVideoPlayer(type, url, title) {
+    function openVideoPlayer(url, title, aspect) {
       const titleElem = document.getElementById('player-title');
       const badgeElem = document.getElementById('player-type-badge');
       const container = document.getElementById('player-embed-container');
@@ -929,36 +943,53 @@ function updateCardTransforms() {
       if (titleElem) titleElem.textContent = title;
       if (directLink) directLink.href = url;
 
-      if (type === 'video') {
-        // Native HTML5 Player - 100% Borderless, no third-party frames
-        if (badgeElem) {
-          badgeElem.textContent = "Vertical Master (9:16)";
-          badgeElem.className = "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 border border-pink-500/30";
-        }
-        if (instructions) instructions.textContent = "Native edge-to-edge high-bitrate stream";
-        if (container) {
+      const isVertical = aspect === '9/16';
+
+      if (badgeElem) {
+        badgeElem.textContent = isVertical ? "Vertical Master (9:16)" : "Widescreen Master (16:9)";
+        badgeElem.className = isVertical 
+          ? "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 border border-pink-500/30"
+          : "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-brand-cyan/20 text-cyan-300 border border-brand-cyan/30";
+      }
+
+      if (instructions) {
+        instructions.textContent = isVertical ? "Vertical high-retention reel" : "High-bitrate master stream";
+      }
+
+      if (container) {
+        if (isVertical) {
+          // 9:16 Vertical Reel Player (Edge-to-edge, zero side bars, single playhead)
           container.innerHTML = `
-            <div class="relative w-full max-w-[340px] aspect-[9/16] max-h-[78vh] flex items-center justify-center rounded-2xl overflow-hidden bg-black shadow-2xl">
+            <div class="relative w-auto h-[68vh] sm:h-[72vh] max-w-[90vw] aspect-[9/16] flex items-center justify-center rounded-2xl overflow-hidden bg-black shadow-2xl mx-auto my-2">
               <video 
                 src="${url}" 
                 controls 
                 autoplay 
                 loop 
                 playsinline 
-                class="w-full h-full object-contain rounded-2xl bg-black">
+                webkit-playsinline
+                class="w-full h-full object-cover rounded-2xl bg-black">
                 Your browser does not support the video tag.
               </video>
             </div>
           `;
-        }
-      } else if (type === 'drive') {
-        if (badgeElem) {
-          badgeElem.textContent = "Video Master";
-          badgeElem.className = "font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-brand-cyan/20 text-cyan-300 border border-brand-cyan/30";
-        }
-        if (instructions) instructions.textContent = "Streaming high-bitrate master";
-        if (container) {
-          container.innerHTML = `<iframe src="${url}" class="w-full h-full aspect-video border-0 rounded-xl" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+        } else {
+          // 16:9 Widescreen Master Player (Locked aspect ratio, single playhead)
+          container.innerHTML = `
+            <div class="w-full max-w-4xl p-2 sm:p-4 flex items-center justify-center">
+              <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-2xl">
+                <video 
+                  src="${url}" 
+                  controls 
+                  autoplay 
+                  playsinline 
+                  webkit-playsinline
+                  class="w-full h-full object-contain rounded-xl bg-black">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          `;
         }
       }
 
@@ -1008,7 +1039,7 @@ function updateCardTransforms() {
     }
 
     // -------------------------------------------------------------
-    // WEB3FORMS SUBMISSION HANDLER (Works locally from Notepad file:///)
+    // WEB3FORMS SUBMISSION HANDLER
     // -------------------------------------------------------------
     async function handleBriefSubmit(e) {
       e.preventDefault();
