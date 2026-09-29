@@ -19,6 +19,14 @@
   <script>
     tailwind.config = {
       darkMode: 'class',
+      // Safelist ensures dynamic classes injected by JavaScript aren't purged by the compiler
+      safelist: [
+        'bg-pink-500/20', 'text-pink-300', 'border-pink-500/30',
+        'bg-brand-cyan/20', 'text-cyan-300', 'border-brand-cyan/30',
+        'h-[68vh]', 'sm:h-[72vh]', 'max-w-[90vw]', 'aspect-[9/16]',
+        'aspect-video', 'max-w-4xl', 'object-contain', 'object-cover',
+        'my-2', 'p-2', 'sm:p-4', 'w-auto'
+      ],
       theme: {
         extend: {
           colors: {
@@ -298,7 +306,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
 
-        <!-- Video Card 1 (16:9 Widescreen) -->
+        <!-- Video Card 1 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="16/9"
@@ -331,7 +339,7 @@
           </div>
         </div>
 
-        <!-- Video Card 2 (9:16 Vertical Reel) -->
+        <!-- Video Card 2 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -364,7 +372,7 @@
           </div>
         </div>
 
-        <!-- Video Card 3 (9:16 Vertical Reel) -->
+        <!-- Video Card 3 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -397,7 +405,7 @@
           </div>
         </div>
 
-        <!-- Video Card 4 (16:9 Widescreen) -->
+        <!-- Video Card 4 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="16/9"
@@ -430,7 +438,7 @@
           </div>
         </div>
 
-        <!-- Video Card 5 (9:16 Vertical Reel) -->
+        <!-- Video Card 5 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -463,7 +471,7 @@
           </div>
         </div>
 
-        <!-- Video Card 6 (9:16 Vertical Reel) -->
+        <!-- Video Card 6 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -496,7 +504,7 @@
           </div>
         </div>
 
-        <!-- Video Card 7 (9:16 Vertical Reel) -->
+        <!-- Video Card 7 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -529,7 +537,7 @@
           </div>
         </div>
 
-        <!-- Video Card 8 (9:16 Vertical Reel) -->
+        <!-- Video Card 8 -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -561,8 +569,6 @@
             </div>
           </div>
         </div>
-
-      </div>
 
       </div>
     </section>
