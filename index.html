@@ -19,7 +19,6 @@
   <script>
     tailwind.config = {
       darkMode: 'class',
-      // Safelist ensures dynamic classes injected by JavaScript aren't purged by the compiler
       safelist: [
         'bg-pink-500/20', 'text-pink-300', 'border-pink-500/30',
         'bg-brand-cyan/20', 'text-cyan-300', 'border-brand-cyan/30',
@@ -53,20 +52,10 @@
 
   <style>
     /* Custom sleek scrollbars */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #06070a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #23253b;
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #8b5cf6;
-    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #06070a; }
+    ::-webkit-scrollbar-thumb { background: #23253b; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
 
     /* Ambient glowing dark multi-tone mesh gradient background */
     body {
@@ -82,33 +71,17 @@
 
     .glass-nav {
       background: rgba(6, 7, 10, 0.82);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     }
-
     .glass-card {
       background: rgba(17, 18, 29, 0.65);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .glass-card:hover {
-      border-color: rgba(139, 92, 246, 0.45);
-    }
-
-    .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 0.02em;
-      line-height: 0.88;
-    }
-
-    /* Suppress duplicate mobile system overlay buttons */
-    video::-webkit-media-controls-fullscreen-button {
-      display: none;
-    }
-    video::-webkit-media-controls-picture-in-picture-button {
-      display: none;
-    }
+    .glass-card:hover { border-color: rgba(139, 92, 246, 0.45); }
+    .hero-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.02em; line-height: 0.88; }
+    video::-webkit-media-controls-fullscreen-button { display: none; }
+    video::-webkit-media-controls-picture-in-picture-button { display: none; }
   </style>
 </head>
 <body class="text-gray-200 font-sans antialiased overflow-x-hidden selection:bg-brand-violet selection:text-white min-h-screen">
@@ -116,7 +89,6 @@
   <!-- HEADER NAVIGATION -->
   <header class="fixed top-0 left-0 right-0 z-40 glass-nav border-b border-brand-border/70 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- Brand Monogram -->
       <a href="#hero" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-violet via-pink-500 to-brand-cyan p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-violet-900/30">
           <div class="w-full h-full bg-brand-dark rounded-xl flex items-center justify-center">
@@ -130,8 +102,6 @@
           <p class="text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1">Video Editor • Motion • Color</p>
         </div>
       </a>
-
-      <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-8 font-medium text-xs tracking-wider uppercase text-gray-300">
         <a href="#about" class="hover:text-white hover:text-brand-cyan transition-colors">About</a>
         <a href="#videos" class="hover:text-white hover:text-brand-cyan transition-colors">Videos</a>
@@ -140,17 +110,13 @@
         </a>
         <a href="#contact" class="hover:text-white hover:text-brand-cyan transition-colors">Contact</a>
       </nav>
-
-      <!-- Action Buttons -->
       <div class="flex items-center gap-3">
         <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-pink-600/15 hover:bg-pink-600/30 text-pink-300 border border-pink-500/30 transition-all">
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram</span>
+          <i class="fa-brands fa-instagram"></i><span>Instagram</span>
         </a>
         <a href="#contact" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-brand-violet via-purple-500 to-brand-cyan hover:brightness-110 text-white shadow-lg shadow-violet-900/40 transition-all">
           Get in Touch
         </a>
-        <!-- Mobile Menu Trigger -->
         <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-brand-card border border-brand-border text-gray-300 hover:text-white" aria-label="Toggle menu">
           <i class="fa-solid fa-bars-staggered text-lg"></i>
         </button>
@@ -162,12 +128,8 @@
   <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden transition-opacity flex flex-col justify-between p-6">
     <div>
       <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-8">
-        <div class="font-headline text-3xl tracking-wider text-white">
-          ALAN MARTIN<span class="text-brand-cyan">.</span>
-        </div>
-        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-2xl p-2" aria-label="Close menu">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <div class="font-headline text-3xl tracking-wider text-white">ALAN MARTIN<span class="text-brand-cyan">.</span></div>
+        <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-2xl p-2" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <nav class="flex flex-col gap-6 text-2xl font-headline tracking-widest text-gray-300">
         <a href="#about" onclick="toggleMobileMenu()" class="hover:text-brand-cyan">01 // About</a>
@@ -179,8 +141,8 @@
     <div class="border-t border-brand-border pt-6 flex items-center justify-between text-xs font-mono text-gray-400">
       <span>Alan Martin • Video Portfolio</span>
       <div class="flex gap-4 text-base text-white">
-        <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp text-emerald-400"></i></a>
+        <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp text-emerald-400"></i></a>
       </div>
     </div>
   </div>
@@ -209,37 +171,23 @@
         </p>
       </div>
 
-      <!-- Hero Highlight Cards -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 mb-10 max-w-2xl">
         <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
-          <div class="w-11 h-11 rounded-xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center text-xl">
-            <i class="fa-brands fa-instagram"></i>
-          </div>
-          <div>
-            <div class="text-sm font-bold text-white">Instagram Reels</div>
-            <div class="text-[11px] text-gray-400 font-mono">9:16 Vertical High Retention</div>
-          </div>
+          <div class="w-11 h-11 rounded-xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center text-xl"><i class="fa-brands fa-instagram"></i></div>
+          <div><div class="text-sm font-bold text-white">Instagram Reels</div><div class="text-[11px] text-gray-400 font-mono">9:16 Vertical High Retention</div></div>
         </div>
-
         <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
-          <div class="w-11 h-11 rounded-xl bg-brand-cyan/15 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-xl">
-            <i class="fa-solid fa-palette"></i>
-          </div>
-          <div>
-            <div class="text-sm font-bold text-white">DaVinci Color Science</div>
-            <div class="text-[11px] text-gray-400 font-mono">Node-Based Film Emulation</div>
-          </div>
+          <div class="w-11 h-11 rounded-xl bg-brand-cyan/15 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-xl"><i class="fa-solid fa-palette"></i></div>
+          <div><div class="text-sm font-bold text-white">DaVinci Color Science</div><div class="text-[11px] text-gray-400 font-mono">Node-Based Film Emulation</div></div>
         </div>
       </div>
 
       <div class="flex flex-wrap items-center gap-4">
         <a href="#videos" class="px-8 py-4 rounded-xl bg-white text-black hover:bg-gray-100 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2 shadow-xl hover:scale-[1.02]">
-          <i class="fa-solid fa-play text-brand-violet text-sm"></i>
-          Watch Videos
+          <i class="fa-solid fa-play text-brand-violet text-sm"></i> Watch Videos
         </a>
         <a href="#gallery" class="px-8 py-4 rounded-xl glass-card text-white hover:bg-white/10 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2">
-          <i class="fa-solid fa-images text-brand-cyan"></i>
-          View Photo Stacks
+          <i class="fa-solid fa-images text-brand-cyan"></i> View Photo Stacks
         </a>
       </div>
     </section>
@@ -248,48 +196,22 @@
     <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border/50">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div class="lg:col-span-4">
-          <h2 class="font-headline text-7xl sm:text-8xl md:text-9xl text-white leading-none">
-            ABOUT
-          </h2>
-
+          <h2 class="font-headline text-7xl sm:text-8xl md:text-9xl text-white leading-none">ABOUT</h2>
           <div class="mt-6 flex flex-col gap-3 font-mono text-xs text-gray-400">
-            <div class="p-3.5 rounded-xl glass-card">
-              <span class="text-gray-400 block text-[10px] uppercase">Primary NLE Suites</span>
-              <span class="text-white font-semibold">DaVinci Resolve Studio & Premiere Pro</span>
-            </div>
-            <div class="p-3.5 rounded-xl glass-card">
-              <span class="text-gray-400 block text-[10px] uppercase">Motion & VFX</span>
-              <span class="text-white font-semibold">Adobe After Effects & Dynamic Typography</span>
-            </div>
+            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase">Primary NLE Suites</span><span class="text-white font-semibold">DaVinci Resolve Studio & Premiere Pro</span></div>
+            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase">Motion & VFX</span><span class="text-white font-semibold">Adobe After Effects & Dynamic Typography</span></div>
           </div>
         </div>
-
         <div class="lg:col-span-8 space-y-6 text-sm sm:text-base leading-relaxed">
           <div class="p-8 rounded-2xl glass-card space-y-5">
             <div class="font-mono text-xs text-brand-cyan font-bold tracking-wider">// CREATIVE PROFILE</div>
-            <p class="text-gray-200 text-lg leading-relaxed font-medium">
-              Backed by over 3 years of hands-on production experience, <strong class="text-white">Alan Martin</strong> delivers as a dedicated <strong class="text-white">Video Editor and Motion Designer</strong>.
-            </p>
-            <p class="text-gray-300 leading-relaxed">
-              These selected projects embody my core philosophy: where <strong class="text-white">sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism</strong> join together to amplify the emotional depth and narrative impact of any production.
-            </p>
-            <p class="text-gray-400 leading-relaxed">
-              By pairing <strong class="text-white">strategic pacing and velocity curves</strong> with advanced <strong class="text-white">Motion Design and DaVinci Resolve color science</strong>, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.
-            </p>
-
+            <p class="text-gray-200 text-lg leading-relaxed font-medium">Backed by over 3 years of hands-on production experience, <strong class="text-white">Alan Martin</strong> delivers as a dedicated <strong class="text-white">Video Editor and Motion Designer</strong>.</p>
+            <p class="text-gray-300 leading-relaxed">These selected projects embody my core philosophy: where <strong class="text-white">sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism</strong> join together to amplify the emotional depth and narrative impact of any production.</p>
+            <p class="text-gray-400 leading-relaxed">By pairing <strong class="text-white">strategic pacing and velocity curves</strong> with advanced <strong class="text-white">Motion Design and DaVinci Resolve color science</strong>, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.</p>
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs border-t border-brand-border/60">
-              <div>
-                <span class="text-gray-400 block text-[10px]">EXPERIENCE</span>
-                <span class="text-white font-semibold">3+ Years</span>
-              </div>
-              <div>
-                <span class="text-gray-400 block text-[10px]">COLOR PIPELINE</span>
-                <span class="text-brand-cyan font-semibold">DaVinci / ACES</span>
-              </div>
-              <div>
-                <span class="text-gray-400 block text-[10px]">DELIVERY</span>
-                <span class="text-emerald-400 font-semibold">Socials & 4K Masters</span>
-              </div>
+              <div><span class="text-gray-400 block text-[10px]">EXPERIENCE</span><span class="text-white font-semibold">3+ Years</span></div>
+              <div><span class="text-gray-400 block text-[10px]">COLOR PIPELINE</span><span class="text-brand-cyan font-semibold">DaVinci / ACES</span></div>
+              <div><span class="text-gray-400 block text-[10px]">DELIVERY</span><span class="text-emerald-400 font-semibold">Socials & 4K Masters</span></div>
             </div>
           </div>
         </div>
@@ -306,7 +228,7 @@
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid">
 
-        <!-- Video Card 1 -->
+        <!-- Video Card 1 (16:9 Widescreen) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="16/9"
@@ -320,11 +242,9 @@
               </span>
             </div>
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
-              <i class="fa-solid fa-film text-cyan-400"></i> Animation / 16:9
+              <i class="fa-solid fa-film text-cyan-400"></i> Video / 16:9
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:11
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:11</span>
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-brand-violet uppercase">LOGO ANIMATION CUT</span>
@@ -332,14 +252,12 @@
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">Stylized Japanese woodblock and parchment art sequence featuring textured ink reveals, animated samurai silhouettes, dynamic camera whips, and geometric dance illustration transitions.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects</span>
-              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">
-                Watch Video <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">Watch Video <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
 
-            <!-- Video Card 2 -->
+        <!-- Video Card 2 (9:16 Vertical) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -355,9 +273,7 @@
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
               <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:39
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:39</span>
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-pink-400 uppercase">PROPERTY TOUR CUT</span>
@@ -365,49 +281,41 @@
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">Dynamic luxury home walkthrough featuring kinetic typography, seamless warp whip transitions, high-energy beat sync, and natural light interior grading.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects • 9:16</span>
-              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">Watch Reel <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
-      </div>
-   
 
-        <!-- Video Card 3 -->
+        <!-- Video Card 3 (16:9 Widescreen) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
-             data-aspect="9/16"
+             data-aspect="16/9"
              data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1790667707/motion_graphics.mov"
-             data-video-title="HISTORICAL & CRIME MOTION GRAPHICS (16:9)">
+             data-video-title="MOTION GRAPHICS SHOWREEL (16:9)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
             <img src="https://res.cloudinary.com/qnfityal/video/upload/v1790667707/motion_graphics.jpg" alt="Documentary Motion Graphics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-brand-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="w-12 h-12 rounded-full bg-pink-600 text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-play text-base ml-0.5"></i>
+              <span class="w-12 h-12 rounded-full bg-brand-violet text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-play text-sm ml-0.5"></i>
               </span>
             </div>
-            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
-              <i class="fa-solid fa-bolt text-pink-400"></i> Horizontal Reel 16:9
+            <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+              <i class="fa-solid fa-film text-cyan-400"></i> Video / 16:9
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:19
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:19</span>
           </div>
           <div class="p-5">
-            <span class="text-xs font-mono text-pink-400 uppercase">Motion Graphics Showreel </span>
-            <h3 class="font-headline text-2xl text-white group-hover:text-pink-400 transition-colors mt-0.5">Motion Graphics Showreel</h3>
+            <span class="text-xs font-mono text-brand-violet uppercase">Motion Graphics Showreel </span>
+            <h3 class="font-headline text-2xl text-white group-hover:text-brand-cyan transition-colors mt-0.5">Motion Graphics Showreel</h3>
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">Multi-layered visual sequence featuring 2.5D parallax photo cutouts, animated vintage cartography, typography paper rips, and dynamic archival highlights.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects • 16:9</span>
-              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-brand-cyan group-hover:underline flex items-center gap-1">Watch Video <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 4 -->
+        <!-- Video Card 4 (9:16 Vertical) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -423,9 +331,7 @@
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
               <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:48
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:48</span>
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-pink-400 uppercase">LISTING PROMO CUT</span>
@@ -433,14 +339,12 @@
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">High-energy real estate listing promo with kinetic offer callouts, speed ramps, smooth whip transitions, and clean modern commercial interior grading.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects • 9:16</span>
-              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">Watch Reel <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
 
-        <!-- Video Card 5 -->
+        <!-- Video Card 5 (9:16 Vertical) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
              data-aspect="9/16"
@@ -456,9 +360,7 @@
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
               <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:35
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:35</span>
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-pink-400 uppercase">PROMOTIONAL CUT</span>
@@ -466,17 +368,15 @@
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">High-end salon promotional walkthrough featuring luminous neon text treatments, smooth light-leak transitions, elegant handheld movement, and modern commercial color finishing.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects • 9:16</span>
-              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">Watch Reel <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
 
-          <!-- Video Card 6 -->
+        <!-- Video Card 6 (9:16 Vertical) -->
         <div class="video-project-card group glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
              data-video-type="video"
-             data-aspect="16/9"
+             data-aspect="9/16"
              data-video-url="https://res.cloudinary.com/qnfityal/video/upload/v1789141473/Talking_head_video__1_prob4.mp4"
              data-video-title="AI SHOPLIFTING DETECTION EXPLAINER (9:16)">
           <div class="relative aspect-video overflow-hidden bg-brand-dark">
@@ -489,9 +389,7 @@
             <span class="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-[10px] font-mono px-2.5 py-1 rounded text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
               <i class="fa-solid fa-bolt text-pink-400"></i> Vertical Reel 9:16
             </span>
-            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">
-              0:41
-            </span>
+            <span class="absolute bottom-3 right-3 bg-black/75 backdrop-blur-md text-[11px] font-mono px-2 py-0.5 rounded text-gray-300">0:41</span>
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-pink-400 uppercase">EXPLAINER CUT</span>
@@ -499,18 +397,16 @@
             <p class="text-xs text-gray-400 mt-2 line-clamp-2">Dynamic talking head breakdown with kinetic typography, store HUD overlays, split-screen retail surveillance feeds, and animated motion graphics.</p>
             <div class="flex items-center justify-between mt-4 pt-3 border-t border-brand-border/60 text-xs font-mono">
               <span class="text-gray-400">Adobe After Effects • 9:16</span>
-              <span class="text-pink-400 group-hover:underline flex items-center gap-1">
-                Watch Reel <i class="fa-solid fa-play text-[10px]"></i>
-              </span>
+              <span class="text-pink-400 group-hover:underline flex items-center gap-1">Watch Reel <i class="fa-solid fa-play text-[10px]"></i></span>
             </div>
           </div>
         </div>
+      </div>
     </section>
 
     <!-- PHOTO STACK GALLERY (NATIVE RATIO + 2D FLY-OUT ENGINE) -->
     <section id="gallery" class="py-24 border-t border-white/5 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
-        
         <div class="text-center max-w-2xl mx-auto mb-16">
           <p class="text-xs uppercase tracking-[0.3em] text-cyan-400 font-mono mb-2">Graded Stills & Stacks</p>
           <h2 class="font-headline text-6xl md:text-8xl tracking-wide text-white">PHOTO GALLERY</h2>
@@ -518,34 +414,23 @@
             <span class="text-brand-cyan">Single tap</span> to view full uncropped &bull; <span class="text-brand-violet">Double tap</span> to send to back
           </p>
         </div>
-
-        <!-- 2D Gallery Stage (True Native Proportions) -->
+        <!-- 2D Gallery Stage -->
         <div class="relative w-full max-w-2xl mx-auto min-h-[460px] md:min-h-[520px] flex items-center justify-center select-none">
-          <div id="photo-stack-container" class="relative w-full h-full flex items-center justify-center">
-            <!-- Native uncropped photos render here -->
-          </div>
+          <div id="photo-stack-container" class="relative w-full h-full flex items-center justify-center"></div>
         </div>
-
-        <!-- Navigation Buttons & Counter -->
+        <!-- Navigation Buttons -->
         <div class="flex items-center justify-center gap-6 mt-12">
-          <button id="stack-prev-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
-            ← PREV
-          </button>
+          <button id="stack-prev-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">← PREV</button>
           <span id="stack-counter" class="text-xs font-mono text-zinc-400 tracking-widest">1 / 6</span>
-          <button id="stack-next-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">
-            NEXT →
-          </button>
+          <button id="stack-next-btn" class="px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 text-xs font-mono tracking-wider text-zinc-200 transition-all hover:scale-105 active:scale-95">NEXT →</button>
         </div>
-
       </div>
     </section>
 
     <!-- FULL VIEW LIGHTBOX MODAL -->
     <div id="gallery-lightbox" class="fixed inset-0 z-50 hidden bg-black/95 backdrop-blur-2xl flex flex-col items-center justify-center p-4 sm:p-8 transition-opacity" onclick="closeLightbox()">
       <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
-        <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-gray-400 hover:text-white text-2xl font-mono p-2 transition-colors" aria-label="Close Lightbox">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-gray-400 hover:text-white text-2xl font-mono p-2 transition-colors" aria-label="Close Lightbox"><i class="fa-solid fa-xmark"></i></button>
         <img id="lightbox-img" src="" alt="Full view uncropped still" class="max-h-[78vh] w-auto max-w-full rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] border border-white/15 object-contain" />
         <div class="mt-4 text-center">
           <h3 id="lightbox-title" class="font-headline text-2xl sm:text-3xl text-white tracking-wider"></h3>
@@ -560,73 +445,42 @@
         <div class="lg:col-span-5 space-y-6">
           <span class="font-mono text-xs uppercase tracking-widest text-brand-cyan font-semibold">// START A COLLABORATION</span>
           <h2 class="font-headline text-5xl sm:text-6xl text-white">GET IN TOUCH</h2>
-          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
-            Need a dynamic flow edit, viral vertical cut, or a master color grade? Send over your project details, deadlines, and footage links.
-          </p>
-
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">Need a dynamic flow edit, viral vertical cut, or a master color grade? Send over your project details, deadlines, and footage links.</p>
           <div class="space-y-4 pt-2">
-            <!-- Email Item -->
             <div class="p-4 rounded-xl glass-card flex items-center justify-between">
               <div>
                 <span class="block text-[10px] font-mono text-gray-400 uppercase">Direct Email</span>
                 <span id="alan-email" class="text-white font-mono font-semibold text-sm">alanmartin.edits@gmail.com</span>
               </div>
               <button onclick="copyAlanEmail()" id="email-copy-btn" class="px-3 py-1.5 rounded-lg bg-brand-border/80 hover:bg-brand-violet hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5">
-                <i class="fa-regular fa-clone"></i>
-                <span id="copy-status">Copy</span>
+                <i class="fa-regular fa-clone"></i><span id="copy-status">Copy</span>
               </button>
             </div>
-
-            <!-- Social Action Row (Instagram & WhatsApp) -->
             <div class="flex items-center gap-3 pt-2">
               <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-pink-400 hover:border-pink-500 hover:bg-pink-600/10 text-xs font-mono transition-all">
-                <i class="fa-brands fa-instagram text-base"></i>
-                <span>Instagram Profile</span>
+                <i class="fa-brands fa-instagram text-base"></i><span>Instagram Profile</span>
               </a>
               <a href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-emerald-400 hover:border-emerald-500 hover:bg-emerald-600/10 text-xs font-mono transition-all">
-                <i class="fa-brands fa-whatsapp text-base"></i>
-                <span>Chat on WhatsApp</span>
+                <i class="fa-brands fa-whatsapp text-base"></i><span>Chat on WhatsApp</span>
               </a>
             </div>
           </div>
         </div>
-
         <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8">
-          <!-- Web3Forms Powered Contact Form -->
           <form id="alan-brief-form" onsubmit="handleBriefSubmit(event)" class="space-y-4">
             <input type="hidden" name="access_key" value="d7a2ca0c-20fb-44a2-8575-41d4b1770a10" />
             <input type="hidden" name="subject" value="New Video Project Inquiry - Alan Martin Portfolio" />
             <input type="hidden" name="from_name" value="Alan Martin Portfolio" />
-
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Your Name</label>
-                <input type="text" name="name" required placeholder="Alex Silva" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
-              </div>
-              <div>
-                <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Email Address</label>
-                <input type="email" name="email" required placeholder="alex@studio.com" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
-              </div>
+              <div><label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Your Name</label><input type="text" name="name" required placeholder="Alex Silva" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" /></div>
+              <div><label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Email Address</label><input type="email" name="email" required placeholder="alex@studio.com" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" /></div>
             </div>
-
-            <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Footage / Brief Link (Optional)</label>
-              <input type="url" name="link" id="footage-link-input" placeholder="https://... or @instagram_handle" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" />
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Project Scope / Details</label>
-              <textarea name="message" id="brief-message-input" rows="4" required placeholder="Tell me about your desired pacing, reference cuts, music direction, or deadline..." class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm"></textarea>
-            </div>
-
-            <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-cyan hover:brightness-110 text-white font-headline text-xl tracking-wider uppercase transition-all shadow-lg shadow-violet-900/40">
-              Send Message to Alan Martin
-            </button>
+            <div><label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Footage / Brief Link (Optional)</label><input type="url" name="link" id="footage-link-input" placeholder="https://... or @instagram_handle" class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm" /></div>
+            <div><label class="block text-xs font-mono uppercase tracking-wider text-gray-400 mb-1.5">Project Scope / Details</label><textarea name="message" id="brief-message-input" rows="4" required placeholder="Tell me about your desired pacing, reference cuts, music direction, or deadline..." class="w-full px-4 py-3 rounded-xl bg-brand-dark/90 border border-brand-border focus:border-brand-violet focus:outline-none text-white text-sm"></textarea></div>
+            <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-violet to-brand-cyan hover:brightness-110 text-white font-headline text-xl tracking-wider uppercase transition-all shadow-lg shadow-violet-900/40">Send Message to Alan Martin</button>
           </form>
-
           <div id="brief-success" class="hidden mt-4 p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-sm font-mono flex items-center gap-3">
-            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-            <span>Message sent! Alan Martin will review your inquiry and get back to you shortly.</span>
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i><span>Message sent! Alan Martin will review your inquiry and get back to you shortly.</span>
           </div>
         </div>
       </div>
@@ -640,13 +494,11 @@
         <span class="w-2 h-2 rounded-full bg-brand-violet animate-pulse"></span>
         <span class="w-2 h-2 rounded-full bg-brand-cyan"></span>
       </div>
-      <p class="text-xs uppercase tracking-widest text-gray-400 font-mono">
-        © 2026 ALAN MARTIN. ALL RIGHTS RESERVED.
-      </p>
+      <p class="text-xs uppercase tracking-widest text-gray-400 font-mono">© 2026 ALAN MARTIN. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
-  <!-- VIDEO PLAYER MODAL (RESPONSIVE EDGE-TO-EDGE FRAME) -->
+  <!-- VIDEO PLAYER MODAL -->
   <div id="video-player-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-xl flex items-center justify-center p-3 sm:p-6 transition-opacity">
     <div class="relative w-full max-w-4xl bg-brand-card rounded-2xl overflow-hidden border border-brand-border shadow-2xl flex flex-col">
       <div class="px-5 py-3.5 border-b border-brand-border flex items-center justify-between bg-brand-dark">
@@ -654,65 +506,27 @@
           <span id="player-type-badge" class="font-mono text-[10px] uppercase px-2.5 py-1 rounded bg-brand-violet text-white">Video Stream</span>
           <h3 id="player-title" class="font-headline text-xl sm:text-2xl text-white tracking-wide truncate max-w-[200px] sm:max-w-md">Video Title</h3>
         </div>
-        <button onclick="closeModal('video-player-modal')" class="text-gray-400 hover:text-white text-xl p-1 transition-colors" aria-label="Close video player">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <button onclick="closeModal('video-player-modal')" class="text-gray-400 hover:text-white text-xl p-1 transition-colors" aria-label="Close video player"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
       <div class="relative w-full bg-black flex items-center justify-center overflow-hidden max-h-[82vh]">
         <div id="player-embed-container" class="w-full h-full flex items-center justify-center p-0"></div>
       </div>
-
       <div class="px-5 py-2.5 bg-brand-dark/90 border-t border-brand-border flex items-center justify-between text-[11px] sm:text-xs font-mono text-gray-400">
         <span id="player-instructions">Master stream active</span>
-        <a id="player-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline flex items-center gap-1">
-          Open Source <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-        </a>
+        <a id="player-direct-link" href="#" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:underline flex items-center gap-1">Open Source <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
       </div>
     </div>
   </div>
 
   <script>
-    // -------------------------------------------------------------
-    // PHOTO STACK DATA & 2D ENGINE (NO FIXED RATIOS, NATIVE FIT)
-    // -------------------------------------------------------------
+    // PHOTO STACK DATA
     const photoStackData = [
-      {
-        id: 1,
-        title: "Portrait Color Master",
-        src: "https://lh3.googleusercontent.com/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ",
-        rot2D: -4
-      },
-      {
-        id: 2,
-        title: "Neon Cinematic Grade",
-        src: "https://lh3.googleusercontent.com/d/1-5QEipq5GlSyn5K15da-A2RM3yJNJVmV",
-        rot2D: 5
-      },
-      {
-        id: 3,
-        title: "Editorial Fashion Still",
-        src: "https://lh3.googleusercontent.com/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8",
-        rot2D: -5
-      },
-      {
-        id: 4,
-        title: "Editorial Fashion Still",
-        src: "https://lh3.googleusercontent.com/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w",
-        rot2D: 5
-      },
-      {
-        id: 5,
-        title: "Editorial Fashion Still",
-        src: "https://lh3.googleusercontent.com/d/1k39hCEM4TLCX6WBOEzgVQ8WeFkkZoTif",
-        rot2D: -6
-      },
-      {
-        id: 6,
-        title: "Editorial Fashion Still",
-        src: "https://lh3.googleusercontent.com/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n",
-        rot2D: 6
-      }
+      { id: 1, title: "Portrait Color Master", src: "https://lh3.googleusercontent.com/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ", rot2D: -4 },
+      { id: 2, title: "Neon Cinematic Grade", src: "https://lh3.googleusercontent.com/d/1-5QEipq5GlSyn5K15da-A2RM3yJNJVmV", rot2D: 5 },
+      { id: 3, title: "Editorial Fashion Still", src: "https://lh3.googleusercontent.com/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8", rot2D: -5 },
+      { id: 4, title: "Editorial Fashion Still", src: "https://lh3.googleusercontent.com/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w", rot2D: 5 },
+      { id: 5, title: "Editorial Fashion Still", src: "https://lh3.googleusercontent.com/d/1k39hCEM4TLCX6WBOEzgVQ8WeFkkZoTif", rot2D: -6 },
+      { id: 6, title: "Editorial Fashion Still", src: "https://lh3.googleusercontent.com/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n", rot2D: 6 }
     ];
 
     let currentOrder = [...photoStackData.keys()];
@@ -722,20 +536,15 @@
     function updateCardTransforms() {
       const total = currentOrder.length;
       const counterElem = document.getElementById("stack-counter");
-      if (counterElem) {
-        counterElem.innerText = `${currentOrder[0] + 1} / ${total}`;
-      }
+      if (counterElem) counterElem.innerText = `${currentOrder[0] + 1} / ${total}`;
 
       currentOrder.forEach((itemIndex, stackPos) => {
         const card = document.getElementById(`photo-card-${itemIndex}`);
         if (!card) return;
-
         const photo = photoStackData[itemIndex];
         const isTop = stackPos === 0;
 
         card.style.zIndex = total - stackPos;
-        
-        // Fluid easing curve: smooth rotation & scale ramp
         card.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease";
 
         if (isTop) {
@@ -758,77 +567,43 @@
       const container = document.getElementById("photo-stack-container");
       if (!container) return;
       container.innerHTML = "";
-
       photoStackData.forEach((photo, idx) => {
         const card = document.createElement("div");
         card.id = `photo-card-${idx}`;
         card.className = "absolute select-none rounded-2xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.85)] border border-white/10 flex items-center justify-center will-change-transform";
-
-        card.innerHTML = `
-          <img 
-            src="${photo.src}" 
-            alt="${photo.title}" 
-            draggable="false"
-            class="w-auto h-auto max-w-[85vw] max-h-[440px] md:max-h-[480px] object-contain block rounded-2xl pointer-events-none"
-          />
-        `;
-
+        card.innerHTML = `<img src="${photo.src}" alt="${photo.title}" draggable="false" class="w-auto h-auto max-w-[85vw] max-h-[440px] md:max-h-[480px] object-contain block rounded-2xl pointer-events-none" />`;
         card.addEventListener("click", (e) => {
           e.stopPropagation();
           const isTop = currentOrder[0] === idx;
           if (!isTop || isAnimating) return;
-
           if (clickTimer == null) {
-            clickTimer = setTimeout(() => {
-              clickTimer = null;
-              openLightbox(photo);
-            }, 250);
+            clickTimer = setTimeout(() => { clickTimer = null; openLightbox(photo); }, 250);
           } else {
-            clearTimeout(clickTimer);
-            clickTimer = null;
-            nextCard();
+            clearTimeout(clickTimer); clickTimer = null; nextCard();
           }
         });
-
         container.appendChild(card);
       });
-
       updateCardTransforms();
     }
 
     function slideCardToBack(topCardIdx) {
       if (isAnimating) return;
       isAnimating = true;
-
       const topCard = document.getElementById(`photo-card-${topCardIdx}`);
-      if (!topCard) {
-        isAnimating = false;
-        return;
-      }
-      
-      // Step 1: Fly top card out to the side
+      if (!topCard) { isAnimating = false; return; }
       topCard.style.transition = "transform 0.4s cubic-bezier(0.32, 0, 0.67, 0), opacity 0.35s ease";
       topCard.style.transform = "translate3d(360px, -20px, 0px) rotate(14deg) scale(0.95)";
       topCard.style.opacity = "0.5";
-
-      // Step 2: At midpoint, cycle order so the card behind rotates straight smoothly
       setTimeout(() => {
         const popped = currentOrder.shift();
         currentOrder.push(popped);
-        
         updateCardTransforms();
-
-        setTimeout(() => {
-          isAnimating = false;
-        }, 500);
+        setTimeout(() => { isAnimating = false; }, 500);
       }, 200);
     }
 
-    function nextCard() {
-      if (isAnimating) return;
-      slideCardToBack(currentOrder[0]);
-    }
-
+    function nextCard() { if (!isAnimating) slideCardToBack(currentOrder[0]); }
     function prevCard() {
       if (isAnimating) return;
       isAnimating = true;
@@ -841,12 +616,9 @@
       const modal = document.getElementById("gallery-lightbox");
       const img = document.getElementById("lightbox-img");
       const title = document.getElementById("lightbox-title");
-
       if (!modal || !img) return;
-      img.src = photo.src;
-      img.alt = photo.title;
+      img.src = photo.src; img.alt = photo.title;
       if (title) title.innerText = photo.title;
-
       modal.classList.remove("hidden");
       document.body.style.overflow = "hidden";
     }
@@ -857,9 +629,7 @@
       document.body.style.overflow = "";
     }
 
-    // -------------------------------------------------------------
-    // VIDEO CARDS & AUTOMATIC 16:9 vs 9:16 NATIVE STREAM PLAYER
-    // -------------------------------------------------------------
+    // VIDEO PLAYER ENGINE
     function initVideoCards() {
       const cards = document.querySelectorAll('.video-project-card');
       cards.forEach(card => {
@@ -898,63 +668,30 @@
 
       if (container) {
         if (isVertical) {
-          // 9:16 Vertical Reel Player (Edge-to-edge, zero side bars, single playhead)
           container.innerHTML = `
             <div class="relative w-auto h-[68vh] sm:h-[72vh] max-w-[90vw] aspect-[9/16] flex items-center justify-center rounded-2xl overflow-hidden bg-black shadow-2xl mx-auto my-2">
-              <video 
-                src="${url}" 
-                controls 
-                autoplay 
-                loop 
-                playsinline 
-                webkit-playsinline
-                class="w-full h-full object-cover rounded-2xl bg-black">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          `;
+              <video src="${url}" controls autoplay loop playsinline webkit-playsinline class="w-full h-full object-cover rounded-2xl bg-black">Your browser does not support the video tag.</video>
+            </div>`;
         } else {
-          // 16:9 Widescreen Master Player (Locked aspect ratio, single playhead)
           container.innerHTML = `
             <div class="w-full max-w-4xl p-2 sm:p-4 flex items-center justify-center">
               <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black shadow-2xl">
-                <video 
-                  src="${url}" 
-                  controls 
-                  autoplay 
-                  playsinline 
-                  webkit-playsinline
-                  class="w-full h-full object-contain rounded-xl bg-black">
-                  Your browser does not support the video tag.
-                </video>
+                <video src="${url}" controls autoplay playsinline webkit-playsinline class="w-full h-full object-contain rounded-xl bg-black">Your browser does not support the video tag.</video>
               </div>
-            </div>
-          `;
+            </div>`;
         }
       }
-
       openModal('video-player-modal');
     }
 
-    function toggleMobileMenu() {
-      const drawer = document.getElementById('mobile-drawer');
-      drawer.classList.toggle('hidden');
-    }
-
+    function toggleMobileMenu() { document.getElementById('mobile-drawer').classList.toggle('hidden'); }
     function openModal(id) {
       const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-      }
+      if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
     }
-
     function closeModal(id) {
       const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
+      if (modal) { modal.classList.add('hidden'); document.body.style.overflow = ''; }
       if (id === 'video-player-modal') {
         const container = document.getElementById('player-embed-container');
         if (container) container.innerHTML = '';
@@ -972,15 +709,10 @@
         document.execCommand('copy');
         copyStatus.textContent = 'Copied!';
         setTimeout(() => { copyStatus.textContent = 'Copy'; }, 2000);
-      } catch (err) {
-        copyStatus.textContent = 'Copied';
-      }
+      } catch (err) { copyStatus.textContent = 'Copied'; }
       document.body.removeChild(tempInput);
     }
 
-    // -------------------------------------------------------------
-    // WEB3FORMS SUBMISSION HANDLER
-    // -------------------------------------------------------------
     async function handleBriefSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -997,37 +729,23 @@
       try {
         const response = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: json
         });
-
         const result = await response.json();
-
         if (result.success) {
           form.reset();
           if (successBox) {
             successBox.classList.remove('hidden');
             setTimeout(() => { successBox.classList.add('hidden'); }, 7000);
           }
-        } else {
-          alert(result.message || "Delivery failed. Please check your Web3Forms access key.");
-        }
-      } catch (error) {
-        alert("Network error. Please reach out via WhatsApp or email directly.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }
+        } else { alert(result.message || "Delivery failed. Please check your Web3Forms access key."); }
+      } catch (error) { alert("Network error. Please reach out via WhatsApp or email directly.");
+      } finally { submitBtn.disabled = false; submitBtn.innerHTML = originalText; }
     }
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeModal('video-player-modal');
-        closeLightbox();
-      }
+      if (e.key === 'Escape') { closeModal('video-player-modal'); closeLightbox(); }
       if (e.key === 'ArrowRight') nextCard();
       if (e.key === 'ArrowLeft') prevCard();
     });
