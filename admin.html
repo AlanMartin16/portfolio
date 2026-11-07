@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex" />
+<title>Admin | Alan Martin Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.3"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{brand:{black:'#06070a',dark:'#0c0d15',card:'#11121d',border:'#202234',violet:'#8b5cf6',cyan:'#06b6d4',pink:'#ec4899'}},fontFamily:{headline:['"Bebas Neue"','sans-serif'],sans:['Inter','sans-serif']}}}};
+</script>
+<style>
+body{background-color:#06070a;background-image:radial-gradient(circle at 14% 12%,rgba(139,92,246,.22) 0%,transparent 42%),radial-gradient(circle at 86% 18%,rgba(6,182,212,.18) 0%,transparent 45%),radial-gradient(circle at 80% 82%,rgba(124,58,237,.18) 0%,transparent 42%);background-attachment:fixed}
+.glass-card{background:rgba(17,18,29,.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08)}
+.fld{width:100%;padding:.75rem 1rem;border-radius:.75rem;background:#0c0d15;border:1px solid #202234;color:#fff;font-size:.9rem}
+.fld:focus{outline:none;border-color:#8b5cf6}
+.lbl{display:block;font-weight:600;color:#fff;font-size:.9rem}
+.hint{font-size:.75rem;color:#9ca3af;margin:.1rem 0 .4rem}
+.btn{padding:.4rem .8rem;border-radius:.5rem;background:#202234;color:#fff;font-size:.75rem;font-weight:600}
+.btn:hover{background:#8b5cf6}
+.go{background:linear-gradient(90deg,#8b5cf6,#06b6d4);color:#fff;font-family:'Bebas Neue',sans-serif;letter-spacing:.05em;font-size:1.4rem;border-radius:.75rem}
+.go:hover{filter:brightness(1.1)}
+/* Safety net: these work even if Tailwind or the fonts fail to load */
+*,*::before,*::after{box-sizing:border-box}
+.fld{max-width:100%;display:block}
+.hidden{display:none!important}
+body{color:#e5e7eb;font-family:Inter,system-ui,sans-serif;margin:0}
+h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;margin:0}
+#setup,#app{max-width:56rem;margin:0 auto;padding:2rem 1rem}
+#setup{max-width:32rem}
+#setup .glass-card,#list .glass-card{padding:1.25rem;margin-top:1rem;border-radius:1.25rem}
+#setup .fld{margin-bottom:1rem}
+#fab{position:fixed;right:1.5rem;bottom:1.5rem;z-index:40;display:flex;align-items:center;gap:.75rem;border:0;cursor:pointer;padding:.6rem 1.5rem .6rem 1rem}
+#modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.85);overflow-y:auto;padding:1rem}
+#modal>div{max-width:36rem;margin:0 auto;background:#11121d;border:1px solid #202234;border-radius:1.5rem;padding:1.5rem}
+#modal .fld{margin-bottom:1rem}
+#prev{max-width:100%;max-height:13rem;display:block;margin:0 auto 1rem}
+#list img{width:7rem;height:4.5rem;object-fit:cover;border-radius:.75rem;flex-shrink:0}
+#list .glass-card{display:flex;align-items:center;gap:.75rem}
+#toast{position:fixed;left:50%;bottom:7rem;transform:translateX(-50%);z-index:60;padding:.75rem 1.25rem;border-radius:.75rem;font-weight:600;max-width:90vw}
+</style>
+</head>
+<body class="text-gray-200 font-sans antialiased min-h-screen">
+
+<!-- STEP 1: CONNECT (first time only) -->
+<div id="setup" class="max-w-lg mx-auto p-5 pt-14">
+  <h1 class="font-headline text-6xl text-white">ADMIN PAGE</h1>
+  <p class="text-gray-300 mt-2">Connect this page to your GitHub once. After that you only press buttons.</p>
+  <div class="glass-card rounded-3xl p-6 mt-6 space-y-4">
+    <div><label class="lbl">GitHub username</label><p class="hint">The name in your GitHub address, github.com/<b>username</b></p><input id="c-user" class="fld" autocomplete="off"></div>
+    <div><label class="lbl">Repository name</label><p class="hint">The repository where your index file lives.</p><input id="c-repo" class="fld" autocomplete="off"></div>
+    <div><label class="lbl">Access token</label><p class="hint">A secret password that lets this page save changes. Steps below.</p><input id="c-token" type="password" class="fld" autocomplete="off"></div>
+    <button id="c-btn" onclick="connect()" class="go w-full py-3">Connect</button>
+  </div>
+  <details class="glass-card rounded-2xl p-5 mt-5 text-sm leading-relaxed">
+    <summary class="cursor-pointer font-semibold text-white">How do I get an access token?</summary>
+    <ol class="list-decimal ml-5 mt-3 space-y-1.5 text-gray-300">
+      <li>Open github.com, click your profile picture, then <b>Settings</b>.</li>
+      <li>Scroll down and click <b>Developer settings</b>, then <b>Personal access tokens</b>, then <b>Fine-grained tokens</b>.</li>
+      <li>Click <b>Generate new token</b> and type any name.</li>
+      <li>Under <b>Repository access</b> pick <b>Only select repositories</b> and choose your portfolio repository.</li>
+      <li>Under <b>Permissions</b>, open <b>Repository permissions</b> and set <b>Contents</b> to <b>Read and write</b>.</li>
+      <li>Click <b>Generate token</b>, copy it, and paste it in the Access token box above.</li>
+    </ol>
+    <p class="mt-3 text-gray-400">The token stays only in this browser. Never share it with anyone.</p>
+  </details>
+</div>
+
+<!-- STEP 2: MANAGE -->
+<div id="app" class="hidden max-w-4xl mx-auto p-4 sm:p-8 pb-32">
+  <div class="flex items-start justify-between gap-4">
+    <div><h1 class="font-headline text-5xl sm:text-6xl text-white">ADMIN PAGE</h1><p class="text-sm text-gray-400">Changes appear on your portfolio about 1 minute after saving.</p></div>
+    <div class="flex gap-2 shrink-0"><a href="index.html" target="_blank" class="btn">View site</a><button onclick="logout()" class="btn">Disconnect</button></div>
+  </div>
+  <div class="flex gap-3 mt-6">
+    <button id="tab-videos" onclick="setTab('videos')"></button>
+    <button id="tab-photos" onclick="setTab('photos')"></button>
+  </div>
+  <div id="list" class="mt-5 space-y-3"></div>
+</div>
+
+<!-- PLUS BUTTON -->
+<button id="fab" onclick="openForm(-1)" class="hidden fixed bottom-6 right-6 z-40 go pl-4 pr-6 py-3 shadow-2xl shadow-violet-900/50 flex items-center gap-3">
+  <span class="text-3xl leading-none">+</span><span id="fab-label"></span>
+</button>
+
+<!-- ADD / EDIT FORM -->
+<div id="modal" class="hidden fixed inset-0 z-50 bg-black/85 overflow-y-auto p-3 sm:p-8">
+  <div class="max-w-xl mx-auto bg-brand-card border border-brand-border rounded-3xl p-5 sm:p-7">
+    <div class="flex items-center justify-between mb-4"><h2 id="m-title" class="font-headline text-4xl text-white"></h2><button onclick="closeForm()" class="text-gray-400 hover:text-white text-2xl px-2" aria-label="Close">&times;</button></div>
+    <img id="prev" class="hidden w-full max-h-52 object-contain rounded-xl bg-black mb-4" alt="Preview">
+
+    <div id="vf" class="space-y-4">
+      <div><label class="lbl">Video link</label><p class="hint">Paste the Cloudinary link to your video.</p><input id="v-url" class="fld" oninput="prev()" placeholder="https://res.cloudinary.com/..."></div>
+      <div><label class="lbl">Heading</label><p class="hint">The big title on the video card.</p><input id="v-title" class="fld"></div>
+      <div><label class="lbl">Subheading</label><p class="hint">The small line above the title, for example Promotional cut.</p><input id="v-label" class="fld"></div>
+      <div><label class="lbl">Description</label><p class="hint">One or two sentences about the video.</p><textarea id="v-desc" rows="4" class="fld"></textarea></div>
+      <div><label class="lbl">Thumbnail link (optional)</label><p class="hint">Leave empty and the thumbnail is made from your video automatically.</p><input id="v-thumb" class="fld" oninput="prev()"></div>
+      <div><label class="lbl">Video shape</label>
+        <div class="grid grid-cols-2 gap-3 mt-1.5">
+          <label><input type="radio" name="asp" value="16/9" class="peer hidden"><span class="block text-center py-3 rounded-xl border border-brand-border cursor-pointer text-sm peer-checked:border-brand-cyan peer-checked:bg-brand-cyan/15 peer-checked:text-white text-gray-400">Wide (16:9)</span></label>
+          <label><input type="radio" name="asp" value="9/16" class="peer hidden"><span class="block text-center py-3 rounded-xl border border-brand-border cursor-pointer text-sm peer-checked:border-pink-500 peer-checked:bg-pink-500/15 peer-checked:text-white text-gray-400">Vertical (9:16)</span></label>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div><label class="lbl">Length</label><p class="hint">For example 0:35</p><input id="v-duration" class="fld"></div>
+        <div><label class="lbl">Made with</label><p class="hint">For example Adobe After Effects</p><input id="v-tools" class="fld"></div>
+      </div>
+    </div>
+
+    <div id="pf" class="hidden space-y-4">
+      <div><label class="lbl">Photo link</label><p class="hint">Paste the normal Google Drive share link. In Drive, set the photo to Anyone with the link.</p><input id="p-url" class="fld" oninput="prev()" placeholder="https://drive.google.com/file/d/..."></div>
+      <div><label class="lbl">Title</label><p class="hint">Shown when someone opens the photo.</p><input id="p-title" class="fld"></div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mt-6">
+      <button onclick="closeForm()" class="btn py-3 text-sm">Cancel</button>
+      <button onclick="submit()" class="go col-span-2 py-3">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let cfg=JSON.parse(localStorage.getItem('adm')||'null'),data={videos:[],photos:[]},tab='videos',edit=-1,tt,q=Promise.resolve();
+const api=()=>`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/data.json`;
+const hdr=()=>({Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'});
+
+function toast(m,bad){const t=$('toast');t.textContent=m;t.className='fixed bottom-28 left-1/2 -translate-x-1/2 z-[60] w-max max-w-[90vw] text-center px-5 py-3 rounded-xl text-sm font-semibold shadow-xl '+(bad?'bg-red-600 text-white':'bg-emerald-400 text-black');clearTimeout(tt);tt=setTimeout(()=>t.classList.add('hidden'),5000)}
+
+const driveUrl=u=>{const m=u.match(/\/d\/([\w-]+)/)||u.match(/[?&]id=([\w-]+)/);return m&&u.includes('drive.google.com')?'https://lh3.googleusercontent.com/d/'+m[1]:u};
+const thumbOf=v=>v.thumb||v.url.replace('/upload/','/upload/so_auto,f_auto,q_auto/').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i,'.jpg');
+
+async function load(){
+  const r=await fetch(api()+'?t='+Date.now(),{headers:hdr()});
+  if(r.status===401||r.status===403)throw new Error('GitHub did not accept the token. Check it and try again.');
+  if(r.status===404)throw new Error('data.json was not found. Check the username and repository name, and make sure data.json is uploaded.');
+  if(!r.ok)throw new Error('GitHub error '+r.status);
+  const j=await r.json();
+  data=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))));
+  data.videos=data.videos||[];data.photos=data.photos||[];
+}
+async function save(){
+  const g=await fetch(api()+'?t='+Date.now(),{headers:hdr()});
+  if(!g.ok)throw new Error('Could not reach GitHub ('+g.status+').');
+  const sha=(await g.json()).sha;
+  const p=await fetch(api(),{method:'PUT',headers:hdr(),body:JSON.stringify({message:'Update portfolio from admin page',content:btoa(unescape(encodeURIComponent(JSON.stringify(data,null,2)))),sha})});
+  if(!p.ok)throw new Error('Save failed ('+p.status+'). Check that the token has Contents: Read and write.');
+}
+function commit(msg){
+  toast('Saving...');
+  q=q.then(async()=>{try{await save();toast(msg||'Saved! Your website updates in about 1 minute.')}catch(e){toast(e.message,1);try{await load();render()}catch(_){}}});
+}
+
+async function connect(){
+  cfg={user:$('c-user').value.trim(),repo:$('c-repo').value.trim(),token:$('c-token').value.trim()};
+  if(!cfg.user||!cfg.repo||!cfg.token)return toast('Please fill in all three boxes.',1);
+  $('c-btn').textContent='Connecting...';
+  try{await load();localStorage.setItem('adm',JSON.stringify(cfg));$('setup').classList.add('hidden');$('app').classList.remove('hidden');$('fab').classList.remove('hidden');render()}
+  catch(e){toast(e.message,1)}
+  $('c-btn').textContent='Connect';
+}
+function logout(){localStorage.removeItem('adm');location.reload()}
+
+function setTab(t){tab=t;render()}
+function render(){
+  ['videos','photos'].forEach(t=>{$('tab-'+t).textContent=(t=='videos'?'Videos':'Photos')+' ('+data[t].length+')';$('tab-'+t).className='px-6 py-3 rounded-xl font-headline text-2xl tracking-wider '+(t==tab?'bg-white text-black':'glass-card text-white')});
+  const v=tab=='videos';
+  $('fab-label').textContent=v?'Add video':'Add photo';
+  $('list').innerHTML=data[tab].length?data[tab].map((x,i)=>`
+    <div class="glass-card rounded-2xl p-3 flex items-center gap-3 sm:gap-4">
+      <img src="${esc(v?thumbOf(x):x.url)}" alt="" class="w-24 h-16 sm:w-36 sm:h-20 rounded-xl object-cover bg-brand-dark shrink-0">
+      <div class="min-w-0 flex-1"><div class="font-headline text-xl sm:text-2xl text-white truncate">${esc(x.title)}</div><div class="text-xs text-gray-400 truncate">${v?esc((x.label||'')+' • '+(x.aspect=='9/16'?'Vertical':'Wide')):'Photo'}</div></div>
+      <div class="flex flex-col sm:flex-row gap-1.5 shrink-0">
+        <div class="flex gap-1.5"><button class="btn" onclick="mv(${i},-1)" aria-label="Move up">&uarr;</button><button class="btn" onclick="mv(${i},1)" aria-label="Move down">&darr;</button></div>
+        <div class="flex gap-1.5"><button class="btn" onclick="openForm(${i})">Edit</button><button class="btn" onclick="del(${i})">Delete</button></div>
+      </div>
+    </div>`).join(''):`<div class="glass-card rounded-2xl p-8 text-center text-gray-300">Nothing here yet. Press the <b>+</b> button to add your first ${v?'video':'photo'}.</div>`;
+}
+
+const set=(id,v)=>$(id).value=v||'';
+function prev(){
+  const v=tab=='videos',a=$('v-url').value.trim(),u=v?($('v-thumb').value.trim()||(a?thumbOf({url:a}):'')):driveUrl($('p-url').value.trim());
+  $('prev').src=u;$('prev').classList.toggle('hidden',!u);
+}
+function openForm(i){
+  edit=i;const v=tab=='videos',x=i>=0?data[tab][i]:{};
+  $('vf').classList.toggle('hidden',!v);$('pf').classList.toggle('hidden',v);
+  $('m-title').textContent=(i>=0?'EDIT ':'ADD ')+(v?'VIDEO':'PHOTO');
+  if(v){['url','title','label','desc','thumb','duration','tools'].forEach(k=>set('v-'+k,x[k]));document.querySelector(`input[name=asp][value="${x.aspect||'16/9'}"]`).checked=true}
+  else{set('p-url',x.url);set('p-title',x.title)}
+  prev();$('modal').classList.remove('hidden');document.body.style.overflow='hidden';
+}
+function closeForm(){$('modal').classList.add('hidden');document.body.style.overflow=''}
+function submit(){
+  const v=tab=='videos',g=id=>$(id).value.trim();let it;
+  if(v){it={title:g('v-title'),label:g('v-label'),desc:g('v-desc'),url:g('v-url'),thumb:g('v-thumb'),aspect:document.querySelector('input[name=asp]:checked').value,duration:g('v-duration'),tools:g('v-tools')};
+    if(!it.url||!it.title)return toast('Please add the video link and the heading.',1)}
+  else{it={title:g('p-title'),url:driveUrl(g('p-url'))};
+    if(!it.url||!it.title)return toast('Please add the photo link and a title.',1)}
+  edit>=0?data[tab][edit]=it:data[tab].unshift(it);
+  closeForm();render();commit();
+}
+function mv(i,d){const L=data[tab],j=i+d;if(j<0||j>=L.length)return;[L[i],L[j]]=[L[j],L[i]];render();commit('Order saved.')}
+function del(i){if(!confirm('Delete "'+data[tab][i].title+'"? This cannot be undone.'))return;data[tab].splice(i,1);render();commit('Deleted. Your website updates in about 1 minute.')}
+
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeForm()});
+if(cfg){$('c-user').value=cfg.user;$('c-repo').value=cfg.repo;$('c-token').value=cfg.token;connect()}
+</script>
+</body>
+</html>
