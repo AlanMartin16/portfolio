@@ -39,6 +39,41 @@ h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;marg
 #list img{width:7rem;height:4.5rem;object-fit:cover;border-radius:.75rem;flex-shrink:0}
 #list .glass-card{display:flex;align-items:center;gap:.75rem}
 #toast{position:fixed;left:50%;bottom:7rem;transform:translateX(-50%);z-index:60;padding:.75rem 1.25rem;border-radius:.75rem;font-weight:600;max-width:90vw}
+
+/* Self-contained styling: no Tailwind needed */
+.go{border:0;cursor:pointer;padding:.7rem 1rem}
+#c-btn{width:100%}
+.btn{border:0;cursor:pointer;text-decoration:none;display:inline-block}
+summary{color:#fff;font-weight:600;cursor:pointer}
+#app>div:first-child{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+#app>div:first-child>div:last-child{display:flex;gap:.5rem;flex-shrink:0}
+#app p{color:#9ca3af;font-size:.85rem;margin:.4rem 0 0}
+.tabs{display:flex;gap:.75rem;margin-top:1.5rem}
+.tab{padding:.7rem 1.5rem;border-radius:.75rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;letter-spacing:.05em;border:1px solid rgba(255,255,255,.12);background:rgba(17,18,29,.7);color:#fff;cursor:pointer}
+.tab.on{background:#fff;color:#000}
+.info{flex:1;min-width:0}
+.ttl{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{font-size:.75rem;color:#9ca3af;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acts{display:flex;gap:.5rem;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;max-width:11rem}
+.acts .g{display:flex;gap:.4rem}
+.empty{justify-content:center;text-align:center;color:#d1d5db;padding:2rem!important}
+.mh{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.mh h2{font-size:2.25rem}
+.mh button{background:none;border:0;color:#9ca3af;font-size:1.75rem;cursor:pointer}
+.chips,.two{margin-bottom:1rem}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.4rem}
+.chips input{display:none}
+.chips span{display:block;text-align:center;padding:.75rem;border-radius:.75rem;border:1px solid #202234;cursor:pointer;color:#9ca3af;font-size:.9rem}
+.chips input:checked+span{border-color:#06b6d4;background:rgba(6,182,212,.15);color:#fff}
+.chips label:last-child input:checked+span{border-color:#ec4899;background:rgba(236,72,153,.15)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.two .fld{margin-bottom:0!important}
+.btns{display:grid;grid-template-columns:1fr 2fr;gap:.75rem;margin-top:1.5rem}
+.cancel{padding:.7rem;font-size:.9rem}
+#toast.ok{background:#34d399;color:#000}
+#toast.bad{background:#dc2626;color:#fff}
+#toast{box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center;font-size:.9rem}
+@media(max-width:640px){.acts{max-width:6.5rem}#list img{width:5.5rem;height:3.75rem}}
 </style>
 </head>
 <body class="text-gray-200 font-sans antialiased min-h-screen">
@@ -73,7 +108,7 @@ h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;marg
     <div><h1 class="font-headline text-5xl sm:text-6xl text-white">ADMIN PAGE</h1><p class="text-sm text-gray-400">Changes appear on your portfolio about 1 minute after saving.</p></div>
     <div class="flex gap-2 shrink-0"><a href="index.html" target="_blank" class="btn">View site</a><button onclick="logout()" class="btn">Disconnect</button></div>
   </div>
-  <div class="flex gap-3 mt-6">
+  <div class="tabs">
     <button id="tab-videos" onclick="setTab('videos')"></button>
     <button id="tab-photos" onclick="setTab('photos')"></button>
   </div>
@@ -88,7 +123,7 @@ h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;marg
 <!-- ADD / EDIT FORM -->
 <div id="modal" class="hidden fixed inset-0 z-50 bg-black/85 overflow-y-auto p-3 sm:p-8">
   <div class="max-w-xl mx-auto bg-brand-card border border-brand-border rounded-3xl p-5 sm:p-7">
-    <div class="flex items-center justify-between mb-4"><h2 id="m-title" class="font-headline text-4xl text-white"></h2><button onclick="closeForm()" class="text-gray-400 hover:text-white text-2xl px-2" aria-label="Close">&times;</button></div>
+    <div class="mh"><h2 id="m-title" class="font-headline text-4xl text-white"></h2><button onclick="closeForm()" class="text-gray-400 hover:text-white text-2xl px-2" aria-label="Close">&times;</button></div>
     <img id="prev" class="hidden w-full max-h-52 object-contain rounded-xl bg-black mb-4" alt="Preview">
 
     <div id="vf" class="space-y-4">
@@ -98,12 +133,12 @@ h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;marg
       <div><label class="lbl">Description</label><p class="hint">One or two sentences about the video.</p><textarea id="v-desc" rows="4" class="fld"></textarea></div>
       <div><label class="lbl">Thumbnail link (optional)</label><p class="hint">Leave empty and the thumbnail is made from your video automatically.</p><input id="v-thumb" class="fld" oninput="prev()"></div>
       <div><label class="lbl">Video shape</label>
-        <div class="grid grid-cols-2 gap-3 mt-1.5">
-          <label><input type="radio" name="asp" value="16/9" class="peer hidden"><span class="block text-center py-3 rounded-xl border border-brand-border cursor-pointer text-sm peer-checked:border-brand-cyan peer-checked:bg-brand-cyan/15 peer-checked:text-white text-gray-400">Wide (16:9)</span></label>
-          <label><input type="radio" name="asp" value="9/16" class="peer hidden"><span class="block text-center py-3 rounded-xl border border-brand-border cursor-pointer text-sm peer-checked:border-pink-500 peer-checked:bg-pink-500/15 peer-checked:text-white text-gray-400">Vertical (9:16)</span></label>
+        <div class="chips">
+          <label><input type="radio" name="asp" value="16/9"><span>Wide (16:9)</span></label>
+          <label><input type="radio" name="asp" value="9/16"><span>Vertical (9:16)</span></label>
         </div>
       </div>
-      <div class="grid grid-cols-2 gap-3">
+      <div class="two">
         <div><label class="lbl">Length</label><p class="hint">For example 0:35</p><input id="v-duration" class="fld"></div>
         <div><label class="lbl">Made with</label><p class="hint">For example Adobe After Effects</p><input id="v-tools" class="fld"></div>
       </div>
@@ -114,9 +149,9 @@ h1,h2{color:#fff;font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;marg
       <div><label class="lbl">Title</label><p class="hint">Shown when someone opens the photo.</p><input id="p-title" class="fld"></div>
     </div>
 
-    <div class="grid grid-cols-3 gap-3 mt-6">
-      <button onclick="closeForm()" class="btn py-3 text-sm">Cancel</button>
-      <button onclick="submit()" class="go col-span-2 py-3">Save</button>
+    <div class="btns">
+      <button onclick="closeForm()" class="btn cancel">Cancel</button>
+      <button onclick="submit()" class="go">Save</button>
     </div>
   </div>
 </div>
@@ -130,7 +165,7 @@ let cfg=JSON.parse(localStorage.getItem('adm')||'null'),data={videos:[],photos:[
 const api=()=>`https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/data.json`;
 const hdr=()=>({Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github+json'});
 
-function toast(m,bad){const t=$('toast');t.textContent=m;t.className='fixed bottom-28 left-1/2 -translate-x-1/2 z-[60] w-max max-w-[90vw] text-center px-5 py-3 rounded-xl text-sm font-semibold shadow-xl '+(bad?'bg-red-600 text-white':'bg-emerald-400 text-black');clearTimeout(tt);tt=setTimeout(()=>t.classList.add('hidden'),5000)}
+function toast(m,bad){const t=$('toast');t.textContent=m;t.className=bad?'bad':'ok';clearTimeout(tt);tt=setTimeout(()=>t.classList.add('hidden'),5000)}
 
 const driveUrl=u=>{const m=u.match(/\/d\/([\w-]+)/)||u.match(/[?&]id=([\w-]+)/);return m&&u.includes('drive.google.com')?'https://lh3.googleusercontent.com/d/'+m[1]:u};
 const thumbOf=v=>v.thumb||v.url.replace('/upload/','/upload/so_auto,f_auto,q_auto/').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i,'.jpg');
@@ -168,18 +203,18 @@ function logout(){localStorage.removeItem('adm');location.reload()}
 
 function setTab(t){tab=t;render()}
 function render(){
-  ['videos','photos'].forEach(t=>{$('tab-'+t).textContent=(t=='videos'?'Videos':'Photos')+' ('+data[t].length+')';$('tab-'+t).className='px-6 py-3 rounded-xl font-headline text-2xl tracking-wider '+(t==tab?'bg-white text-black':'glass-card text-white')});
+  ['videos','photos'].forEach(t=>{$('tab-'+t).textContent=(t=='videos'?'Videos':'Photos')+' ('+data[t].length+')';$('tab-'+t).className='tab'+(t==tab?' on':'')});
   const v=tab=='videos';
   $('fab-label').textContent=v?'Add video':'Add photo';
   $('list').innerHTML=data[tab].length?data[tab].map((x,i)=>`
     <div class="glass-card rounded-2xl p-3 flex items-center gap-3 sm:gap-4">
       <img src="${esc(v?thumbOf(x):x.url)}" alt="" class="w-24 h-16 sm:w-36 sm:h-20 rounded-xl object-cover bg-brand-dark shrink-0">
-      <div class="min-w-0 flex-1"><div class="font-headline text-xl sm:text-2xl text-white truncate">${esc(x.title)}</div><div class="text-xs text-gray-400 truncate">${v?esc((x.label||'')+' • '+(x.aspect=='9/16'?'Vertical':'Wide')):'Photo'}</div></div>
-      <div class="flex flex-col sm:flex-row gap-1.5 shrink-0">
-        <div class="flex gap-1.5"><button class="btn" onclick="mv(${i},-1)" aria-label="Move up">&uarr;</button><button class="btn" onclick="mv(${i},1)" aria-label="Move down">&darr;</button></div>
-        <div class="flex gap-1.5"><button class="btn" onclick="openForm(${i})">Edit</button><button class="btn" onclick="del(${i})">Delete</button></div>
+      <div class="info"><div class="ttl">${esc(x.title)}</div><div class="sub">${v?esc((x.label||'')+' • '+(x.aspect=='9/16'?'Vertical':'Wide')):'Photo'}</div></div>
+      <div class="acts">
+        <div class="g"><button class="btn" onclick="mv(${i},-1)" aria-label="Move up">&uarr;</button><button class="btn" onclick="mv(${i},1)" aria-label="Move down">&darr;</button></div>
+        <div class="g"><button class="btn" onclick="openForm(${i})">Edit</button><button class="btn" onclick="del(${i})">Delete</button></div>
       </div>
-    </div>`).join(''):`<div class="glass-card rounded-2xl p-8 text-center text-gray-300">Nothing here yet. Press the <b>+</b> button to add your first ${v?'video':'photo'}.</div>`;
+    </div>`).join(''):`<div class="glass-card empty">Nothing here yet. Press the <b>+</b> button to add your first ${v?'video':'photo'}.</div>`;
 }
 
 const set=(id,v)=>$(id).value=v||'';
