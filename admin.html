@@ -74,6 +74,11 @@ summary{color:#fff;font-weight:600;cursor:pointer}
 #toast.bad{background:#dc2626;color:#fff}
 #toast{box-shadow:0 10px 30px rgba(0,0,0,.5);text-align:center;font-size:.9rem}
 @media(max-width:640px){.acts{max-width:6.5rem}#list img{width:5.5rem;height:3.75rem}}
+.tabs{flex-wrap:wrap}
+#list .sg{display:block!important;margin-top:1rem}
+.sg h2{font-size:1.9rem;margin-bottom:.9rem}
+.sf{margin-bottom:1rem}
+.sf .fld{margin-top:.25rem}
 </style>
 </head>
 <body class="text-gray-200 font-sans antialiased min-h-screen">
@@ -111,6 +116,7 @@ summary{color:#fff;font-weight:600;cursor:pointer}
   <div class="tabs">
     <button id="tab-videos" onclick="setTab('videos')"></button>
     <button id="tab-photos" onclick="setTab('photos')"></button>
+    <button id="tab-site" onclick="setTab('site')"></button>
   </div>
   <div id="list" class="mt-5 space-y-3"></div>
 </div>
@@ -185,7 +191,7 @@ async function load(){
   if(!r.ok)throw new Error('GitHub error '+r.status);
   const j=await r.json();
   data=JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))));
-  data.videos=data.videos||[];data.photos=data.photos||[];
+  data.videos=data.videos||[];data.photos=data.photos||[];data.site=data.site||{};
 }
 async function save(){
   const g=await fetch(api()+'?t='+Date.now(),{headers:hdr()});
@@ -211,7 +217,7 @@ function logout(){localStorage.removeItem('adm');location.reload()}
 
 function setTab(t){tab=t;render()}
 function render(){
-  ['videos','photos'].forEach(t=>{$('tab-'+t).textContent=(t=='videos'?'Videos':'Photos')+' ('+data[t].length+')';$('tab-'+t).className='tab'+(t==tab?' on':'')});
+  ['videos','photos','site'].forEach(t=>{$('tab-'+t).textContent=t=='site'?'Site text':(t=='videos'?'Videos':'Photos')+' ('+data[t].length+')';$('tab-'+t).className='tab'+(t==tab?' on':'')});$('fab').classList.toggle('hidden',tab=='site');if(tab=='site')return renderSite();
   const v=tab=='videos';
   $('fab-label').textContent=v?'Add video':'Add photo';
   $('list').innerHTML=data[tab].length?data[tab].map((x,i)=>`
@@ -225,6 +231,20 @@ function render(){
     </div>`).join(''):`<div class="glass-card empty">Nothing here yet. Press the <b>+</b> button to add your first ${v?'video':'photo'}.</div>`;
 }
 
+const BOLD='Put **two stars** around words to make them bold.';
+const SITE=[
+['Menu and logo',[['brand_initials','Logo letters','AM'],['brand_name','Your name','ALAN MARTIN'],['brand_tagline','Small line under your name','Video Editor • Motion • Color']]],
+['Top section',[['hero_badge1','Badge 1','3+ Years Experience'],['hero_badge2','Badge 2','Dynamic Flow & Velocity Edits'],['hero_badge3','Badge 3 (green)','Open for Freelance Projects'],['hero_title','Big title','PORTFOLIO'],['hero_subtitle','Line under the big title','Video Editor & Motion Designer'],['hero_card1_title','Box 1 title','Instagram Reels'],['hero_card1_sub','Box 1 small text','9:16 Vertical High Retention'],['hero_card2_title','Box 2 title','DaVinci Color Science'],['hero_card2_sub','Box 2 small text','Node-Based Film Emulation'],['hero_btn1','First button','Watch Videos'],['hero_btn2','Second button','View Photo Stacks']]],
+['About section',[['about_title','Section title','ABOUT'],['about_box1_label','Left box 1 label','Primary NLE Suites'],['about_box1_value','Left box 1 text','DaVinci Resolve Studio & Premiere Pro'],['about_box2_label','Left box 2 label','Motion & VFX'],['about_box2_value','Left box 2 text','Adobe After Effects & Dynamic Typography'],['about_eyebrow','Small heading','// CREATIVE PROFILE'],['about_p1','Paragraph 1','Backed by over 3 years of hands-on production experience, **Alan Martin** delivers as a dedicated **Video Editor and Motion Designer**.','a',BOLD],['about_p2','Paragraph 2','These selected projects embody my core philosophy: where **sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism** join together to amplify the emotional depth and narrative impact of any production.','a',BOLD],['about_p3','Paragraph 3','By pairing **strategic pacing and velocity curves** with advanced **Motion Design and DaVinci Resolve color science**, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.','a',BOLD],['stat1_label','Fact 1 label','EXPERIENCE'],['stat1_value','Fact 1 text','3+ Years'],['stat2_label','Fact 2 label','COLOR PIPELINE'],['stat2_value','Fact 2 text','DaVinci / ACES'],['stat3_label','Fact 3 label','DELIVERY'],['stat3_value','Fact 3 text','Socials & 4K Masters']]],
+['Video and photo headings',[['videos_eyebrow','Videos small heading','// TIMELINE SELECTS'],['videos_title','Videos title','FEATURED VIDEOS'],['videos_sub','Videos line under title','Direct master streams and borderless video playback.'],['gallery_eyebrow','Photos small heading','Graded Stills & Stacks'],['gallery_title','Photos title','PHOTO GALLERY']]],
+['Contact',[['contact_eyebrow','Small heading','// START A COLLABORATION'],['contact_title','Title','GET IN TOUCH'],['contact_text','Text','Need a dynamic flow edit, viral vertical cut, or a master color grade? Send over your project details, deadlines, and footage links.','a'],['email','Email address','alanmartin.edits@gmail.com'],['instagram_url','Instagram link','https://www.instagram.com/syfics.ae/'],['whatsapp','WhatsApp number','919746217953','','Country code first, numbers only. No plus sign or spaces.']]],
+['Footer',[['footer_text','Footer text','© 2026 ALAN MARTIN. ALL RIGHTS RESERVED.']]]
+];
+function renderSite(){
+  const s=data.site||{};
+  $('list').innerHTML='<div class="glass-card sg"><p style="margin:0">Change any text below, then press the big Save button at the bottom. Leave a box as it is to keep the current text.</p></div>'+SITE.map(g=>`<div class="glass-card sg"><h2>${g[0]}</h2>`+g[1].map(f=>`<div class="sf"><label class="lbl">${f[1]}</label>${f[4]?`<p class="hint">${f[4]}</p>`:''}${f[3]?`<textarea class="fld" data-k="${f[0]}" rows="5">${esc(s[f[0]]||f[2])}</textarea>`:`<input class="fld" data-k="${f[0]}" value="${esc(s[f[0]]||f[2])}">`}</div>`).join('')+'</div>').join('')+'<button class="go" style="width:100%;margin-top:1rem" onclick="saveSite()">Save site text</button>';
+}
+function saveSite(){const s={};document.querySelectorAll('#list [data-k]').forEach(e=>s[e.dataset.k]=e.value.trim());data.site=s;commit()}
 const set=(id,v)=>$(id).value=v||'';
 function prev(){
   const v=tab=='videos',a=$('v-url').value.trim(),link=document.querySelector('input[name=tmode]:checked').value=='link',u=v?(link&&$('v-thumb').value.trim()?driveUrl($('v-thumb').value.trim()):(a?frameUrl(a,$('v-sec').value):'')):driveUrl($('p-url').value.trim());
