@@ -41,17 +41,6 @@
       "tools": "Adobe After Effects"
     },
     {
-      "title": "Recent videos",
-      "label": "Talking Head Video",
-      "desc": "",
-      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794228235/For_portfolio.mp4",
-      "thumb": "",
-      "sec": "",
-      "aspect": "16/9",
-      "duration": "0:27",
-      "tools": "After Effects"
-    },
-    {
       "title": "PURPLE 7 SALON OFFERS PROMO",
       "label": "PROMOTIONAL CUT",
       "desc": "High-end salon promotional walkthrough featuring luminous neon text treatments, smooth light-leak transitions, elegant handheld movement, and modern commercial color finishing.",
@@ -71,6 +60,17 @@
       "aspect": "16/9",
       "duration": "0:45",
       "tools": "Adobe After Effects and DaVinci Resolve"
+    },
+    {
+      "title": "Recent videos",
+      "label": "Talking Head Video",
+      "desc": "",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794228235/For_portfolio.mp4",
+      "thumb": "",
+      "sec": "",
+      "aspect": "16/9",
+      "duration": "0:27",
+      "tools": "After Effects"
     }
   ],
   "photos": [
