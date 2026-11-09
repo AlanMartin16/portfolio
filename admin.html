@@ -131,17 +131,22 @@ summary{color:#fff;font-weight:600;cursor:pointer}
       <div><label class="lbl">Heading</label><p class="hint">The big title on the video card.</p><input id="v-title" class="fld"></div>
       <div><label class="lbl">Subheading</label><p class="hint">The small line above the title, for example Promotional cut.</p><input id="v-label" class="fld"></div>
       <div><label class="lbl">Description</label><p class="hint">One or two sentences about the video.</p><textarea id="v-desc" rows="4" class="fld"></textarea></div>
-      <div><label class="lbl">Thumbnail link (optional)</label><p class="hint">Leave empty and the thumbnail is made from your video automatically.</p><input id="v-thumb" class="fld" oninput="prev()"></div>
+      <div><label class="lbl">Thumbnail</label><p class="hint">Choose how the thumbnail is made.</p>
+        <div class="chips">
+          <label><input type="radio" name="tmode" value="frame" onchange="tmode()"><span>From the video</span></label>
+          <label><input type="radio" name="tmode" value="link" onchange="tmode()"><span>From a link</span></label>
+        </div>
+        <div id="t-frame"><label class="lbl">Which second?</label><p class="hint">Type the exact second of the frame you want, for example 6 or 12.5.</p><input id="v-sec" class="fld" inputmode="decimal" placeholder="0" oninput="prev()"></div>
+        <div id="t-link" class="hidden"><label class="lbl">Image link</label><p class="hint">Paste a Google Drive share link or any image link.</p><input id="v-thumb" class="fld" oninput="prev()" placeholder="https://..."></div>
+      </div>
       <div><label class="lbl">Video shape</label>
         <div class="chips">
           <label><input type="radio" name="asp" value="16/9"><span>Wide (16:9)</span></label>
           <label><input type="radio" name="asp" value="9/16"><span>Vertical (9:16)</span></label>
         </div>
       </div>
-      <div class="two">
-        <div><label class="lbl">Length</label><p class="hint">For example 0:35</p><input id="v-duration" class="fld"></div>
-        <div><label class="lbl">Made with</label><p class="hint">For example Adobe After Effects</p><input id="v-tools" class="fld"></div>
-      </div>
+      <div><label class="lbl">Made with</label><p class="hint">For example Adobe After Effects</p><input id="v-tools" class="fld"></div>
+    
     </div>
 
     <div id="pf" class="hidden space-y-4">
@@ -168,7 +173,10 @@ const hdr=()=>({Authorization:'Bearer '+cfg.token,Accept:'application/vnd.github
 function toast(m,bad){const t=$('toast');t.textContent=m;t.className=bad?'bad':'ok';clearTimeout(tt);tt=setTimeout(()=>t.classList.add('hidden'),5000)}
 
 const driveUrl=u=>{const m=u.match(/\/d\/([\w-]+)/)||u.match(/[?&]id=([\w-]+)/);return m&&u.includes('drive.google.com')?'https://lh3.googleusercontent.com/d/'+m[1]:u};
-const thumbOf=v=>v.thumb||v.url.replace('/upload/','/upload/so_auto,f_auto,q_auto/').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i,'.jpg');
+const frameUrl=(url,s)=>url.replace(/\/upload\/(?:[^\/]*\/)??(v\d+\/)/,'/upload/so_'+(parseFloat(s)>0?parseFloat(s):0)+',f_auto,q_auto/$1').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i,'.jpg');
+const thumbOf=v=>v.thumb?driveUrl(v.thumb):(v.url?frameUrl(v.url,v.sec||0):'');
+const mmss=t=>{t=Math.round(t);return Math.floor(t/60)+':'+String(t%60).padStart(2,'0')};
+const getDur=url=>new Promise(res=>{const v=document.createElement('video');v.preload='metadata';v.muted=true;const t=setTimeout(()=>res(''),12000);v.onloadedmetadata=()=>{clearTimeout(t);res(isFinite(v.duration)?mmss(v.duration):'')};v.onerror=()=>{clearTimeout(t);res('')};v.src=url});
 
 async function load(){
   const r=await fetch(api()+'?t='+Date.now(),{headers:hdr()});
@@ -219,22 +227,27 @@ function render(){
 
 const set=(id,v)=>$(id).value=v||'';
 function prev(){
-  const v=tab=='videos',a=$('v-url').value.trim(),u=v?($('v-thumb').value.trim()||(a?thumbOf({url:a}):'')):driveUrl($('p-url').value.trim());
+  const v=tab=='videos',a=$('v-url').value.trim(),link=document.querySelector('input[name=tmode]:checked').value=='link',u=v?(link&&$('v-thumb').value.trim()?driveUrl($('v-thumb').value.trim()):(a?frameUrl(a,$('v-sec').value):'')):driveUrl($('p-url').value.trim());
   $('prev').src=u;$('prev').classList.toggle('hidden',!u);
 }
+function tmode(){const l=document.querySelector('input[name=tmode]:checked').value=='link';$('t-link').classList.toggle('hidden',!l);$('t-frame').classList.toggle('hidden',l);prev()}
 function openForm(i){
   edit=i;const v=tab=='videos',x=i>=0?data[tab][i]:{};
   $('vf').classList.toggle('hidden',!v);$('pf').classList.toggle('hidden',v);
   $('m-title').textContent=(i>=0?'EDIT ':'ADD ')+(v?'VIDEO':'PHOTO');
-  if(v){['url','title','label','desc','thumb','duration','tools'].forEach(k=>set('v-'+k,x[k]));document.querySelector(`input[name=asp][value="${x.aspect||'16/9'}"]`).checked=true}
+  if(v){['url','title','label','desc','thumb','tools'].forEach(k=>set('v-'+k,x[k]));set('v-sec',x.sec);document.querySelector(`input[name=asp][value="${x.aspect||'16/9'}"]`).checked=true;document.querySelector(`input[name=tmode][value="${x.thumb?'link':'frame'}"]`).checked=true;tmode()}
   else{set('p-url',x.url);set('p-title',x.title)}
   prev();$('modal').classList.remove('hidden');document.body.style.overflow='hidden';
 }
 function closeForm(){$('modal').classList.add('hidden');document.body.style.overflow=''}
-function submit(){
+async function submit(){
   const v=tab=='videos',g=id=>$(id).value.trim();let it;
-  if(v){it={title:g('v-title'),label:g('v-label'),desc:g('v-desc'),url:g('v-url'),thumb:g('v-thumb'),aspect:document.querySelector('input[name=asp]:checked').value,duration:g('v-duration'),tools:g('v-tools')};
-    if(!it.url||!it.title)return toast('Please add the video link and the heading.',1)}
+  if(v){const link=document.querySelector('input[name=tmode]:checked').value=='link';
+    it={title:g('v-title'),label:g('v-label'),desc:g('v-desc'),url:g('v-url'),thumb:link?driveUrl(g('v-thumb')):'',sec:link?'':g('v-sec'),aspect:document.querySelector('input[name=asp]:checked').value,duration:'',tools:g('v-tools')};
+    if(!it.url||!it.title)return toast('Please add the video link and the heading.',1);
+    toast('Reading the video length...');
+    it.duration=await getDur(it.url);
+    if(!it.duration&&edit>=0)it.duration=data.videos[edit].duration||''}
   else{it={title:g('p-title'),url:driveUrl(g('p-url'))};
     if(!it.url||!it.title)return toast('Please add the photo link and a title.',1)}
   edit>=0?data[tab][edit]=it:data[tab].unshift(it);
