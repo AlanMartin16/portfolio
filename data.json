@@ -1,6 +1,16 @@
 {
   "videos": [
     {
+      "title": "DIGNITO JAPANESE ART TITLE INTRO",
+      "label": "LOGO ANIMATION CUT",
+      "desc": "Stylized Japanese woodblock and parchment art sequence featuring textured ink reveals, animated samurai silhouettes, dynamic camera whips, and geometric dance illustration transitions.",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1789132942/DIGNITO_Title_Animation.mp4",
+      "thumb": "https://res.cloudinary.com/qnfityal/video/upload/so_auto,f_auto,q_auto/v1789132942/DIGNITO_Title_Animation.jpg",
+      "aspect": "16/9",
+      "duration": "0:11",
+      "tools": "Adobe After Effects"
+    },
+    {
       "title": "Recent videos",
       "label": "Talking Head Video",
       "desc": "",
@@ -10,16 +20,6 @@
       "aspect": "16/9",
       "duration": "0:27",
       "tools": "After Effects"
-    },
-    {
-      "title": "DIGNITO JAPANESE ART TITLE INTRO",
-      "label": "LOGO ANIMATION CUT",
-      "desc": "Stylized Japanese woodblock and parchment art sequence featuring textured ink reveals, animated samurai silhouettes, dynamic camera whips, and geometric dance illustration transitions.",
-      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1789132942/DIGNITO_Title_Animation.mp4",
-      "thumb": "https://res.cloudinary.com/qnfityal/video/upload/so_auto,f_auto,q_auto/v1789132942/DIGNITO_Title_Animation.jpg",
-      "aspect": "16/9",
-      "duration": "0:11",
-      "tools": "Adobe After Effects"
     },
     {
       "title": "NEWPORT BEACH WATERFRONT TOUR",
