@@ -34,9 +34,23 @@
     </div>`;
   }
 
+  const fmt = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong class="text-white">$1</strong>');
+  function applySite(S) {
+    Object.keys(S).forEach(k => {
+      const v = String(S[k] == null ? '' : S[k]).trim();
+      if (!v) return;
+      document.querySelectorAll('[data-t="' + k + '"]').forEach(el => { el.innerHTML = fmt(v); });
+    });
+    if (S.instagram_url) document.querySelectorAll('[data-href="instagram_url"]').forEach(x => { x.href = S.instagram_url; });
+    const n = String(S.whatsapp || '').replace(/\D/g, '');
+    if (n) document.querySelectorAll('[data-href="whatsapp"]').forEach(x => { x.href = x.href.replace(/wa\.me\/\d+/, 'wa.me/' + n); });
+    if (S.brand_name) document.title = S.brand_name + ' | ' + (S.hero_subtitle || 'Video Editor & Motion Designer');
+  }
+
   fetch('data.json?t=' + Date.now())
     .then(r => r.json())
     .then(d => {
+      applySite(d.site || {});
       const grid = document.getElementById('video-grid');
       if (grid && d.videos) {
         grid.innerHTML = d.videos.map(card).join('');
