@@ -51,41 +51,22 @@
       "tools": "Adobe After Effects"
     },
     {
-      "title": "Airshow Video",
-      "label": "Airshow held in Dubai in 2025",
-      "desc": "",
-      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794223695/AirShow_Video.mp4",
-      "thumb": "",
-      "sec": "44",
-      "aspect": "16/9",
-      "duration": "0:45",
-      "tools": "Adobe After Effects and DaVinci Resolve"
+      "title": "ASTON MARTIN DB11",
+      "label": "About Service",
+      "desc": "Dynamic kinetic typography, store HUD overlays, ASTON MARTIN DB11, and animated motion graphics.",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/so_00,f_auto,q_auto/v1790668989/Aston_martin_db11_Alan_martin.mp4",
+      "thumb": "https://res.cloudinary.com/qnfityal/video/upload/so_00.0,f_auto,q_auto/v1790668989/Aston_martin_db11_Alan_martin.JPG",
+      "aspect": "9/16",
+      "duration": "0:31",
+      "tools": "Adobe After Effects"
     }
   ],
   "photos": [
-    {
-      "title": "Portrait Color Master",
-      "url": "https://lh3.googleusercontent.com/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ"
-    },
-    {
-      "title": "Neon Cinematic Grade",
-      "url": "https://lh3.googleusercontent.com/d/1-5QEipq5GlSyn5K15da-A2RM3yJNJVmV"
-    },
-    {
-      "title": "Editorial Fashion Still",
-      "url": "https://lh3.googleusercontent.com/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8"
-    },
-    {
-      "title": "Editorial Fashion Still",
-      "url": "https://lh3.googleusercontent.com/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w"
-    },
-    {
-      "title": "Editorial Fashion Still",
-      "url": "https://lh3.googleusercontent.com/d/1k39hCEM4TLCX6WBOEzgVQ8WeFkkZoTif"
-    },
-    {
-      "title": "Editorial Fashion Still",
-      "url": "https://lh3.googleusercontent.com/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n"
-    }
+    { "title": "Portrait Color Master", "url": "https://lh3.googleusercontent.com/d/14tsuZiw98b9OLDjervap0SS4CDodvVbQ" },
+    { "title": "Neon Cinematic Grade", "url": "https://lh3.googleusercontent.com/d/1-5QEipq5GlSyn5K15da-A2RM3yJNJVmV" },
+    { "title": "Editorial Fashion Still", "url": "https://lh3.googleusercontent.com/d/1zh1F_FZgKd-T0cbnc-XG34OkaQKBGDR8" },
+    { "title": "Editorial Fashion Still", "url": "https://lh3.googleusercontent.com/d/1LtlQhu9c2nbQVM_BBKXnvU1FKgB4BD6w" },
+    { "title": "Editorial Fashion Still", "url": "https://lh3.googleusercontent.com/d/1k39hCEM4TLCX6WBOEzgVQ8WeFkkZoTif" },
+    { "title": "Editorial Fashion Still", "url": "https://lh3.googleusercontent.com/d/1bCas_8L2MaA1NYeLAkH6qQMfTBrSWV0n" }
   ]
 }
