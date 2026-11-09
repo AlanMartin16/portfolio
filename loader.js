@@ -2,7 +2,9 @@
    If data.json cannot be loaded, the original cards in index.html stay as they are. */
 (function () {
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const thumbOf = v => v.thumb || v.url.replace('/upload/', '/upload/so_auto,f_auto,q_auto/').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i, '.jpg');
+  const driveFix = u => { const m = u.match(/\/d\/([\w-]+)/) || u.match(/[?&]id=([\w-]+)/); return m && u.includes('drive.google.com') ? 'https://lh3.googleusercontent.com/d/' + m[1] : u; };
+  const frameUrl = (url, s) => url.replace(/\/upload\/(?:[^\/]*\/)??(v\d+\/)/, '/upload/so_' + (parseFloat(s) > 0 ? parseFloat(s) : 0) + ',f_auto,q_auto/$1').replace(/\.(mp4|mov|webm|m4v)(\?.*)?$/i, '.jpg');
+  const thumbOf = v => v.thumb ? driveFix(v.thumb) : frameUrl(v.url, v.sec || 0);
 
   function card(v) {
     const vert = v.aspect === '9/16';
