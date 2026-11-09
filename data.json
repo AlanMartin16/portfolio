@@ -11,16 +11,6 @@
       "tools": "Adobe After Effects"
     },
     {
-      "title": "Airshow Video",
-      "label": "Airshow held in Dubai in 2025",
-      "desc": "",
-      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794223695/AirShow_Video.mp4",
-      "thumb": "",
-      "aspect": "16/9",
-      "duration": "0:45",
-      "tools": "Made with  Adobe After Effects and DaVinci Resolve"
-    },
-    {
       "title": "NEWPORT BEACH WATERFRONT TOUR",
       "label": "PROPERTY TOUR CUT",
       "desc": "Dynamic luxury home walkthrough featuring kinetic typography, seamless warp whip transitions, high-energy beat sync, and natural light interior grading.",
@@ -39,6 +29,16 @@
       "aspect": "16/9",
       "duration": "0:19",
       "tools": "Adobe After Effects"
+    },
+    {
+      "title": "Airshow Video",
+      "label": "Airshow held in Dubai in 2025",
+      "desc": "",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794223695/AirShow_Video.mp4",
+      "thumb": "",
+      "aspect": "16/9",
+      "duration": "0:45",
+      "tools": "Made with  Adobe After Effects and DaVinci Resolve"
     },
     {
       "title": "THE COVES AT WESLACO TOWNHOMES",
