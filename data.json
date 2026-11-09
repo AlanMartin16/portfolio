@@ -1,6 +1,17 @@
 {
   "videos": [
     {
+      "title": "Recent videos",
+      "label": "Talking Head Video",
+      "desc": "",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794228235/For_portfolio.mp4",
+      "thumb": "",
+      "sec": "",
+      "aspect": "16/9",
+      "duration": "0:27",
+      "tools": "After Effects"
+    },
+    {
       "title": "DIGNITO JAPANESE ART TITLE INTRO",
       "label": "LOGO ANIMATION CUT",
       "desc": "Stylized Japanese woodblock and parchment art sequence featuring textured ink reveals, animated samurai silhouettes, dynamic camera whips, and geometric dance illustration transitions.",
