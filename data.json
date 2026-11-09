@@ -21,17 +21,6 @@
       "tools": "Adobe After Effects"
     },
     {
-      "title": "Airshow Video",
-      "label": "Highlight Video",
-      "desc": "Airshow Video held in Dubai in 2025",
-      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794223695/AirShow_Video.mp4",
-      "thumb": "",
-      "sec": "44",
-      "aspect": "16/9",
-      "duration": "0:45",
-      "tools": "Adobe After Effects and DaVinci Resolve"
-    },
-    {
       "title": "Motion Graphics Showreel",
       "label": "Motion Graphics Showreel",
       "desc": "Multi-layered visual sequence featuring 2.5D parallax photo cutouts, animated vintage cartography, typography paper rips, and dynamic archival highlights.",
@@ -50,6 +39,17 @@
       "aspect": "9/16",
       "duration": "0:48",
       "tools": "Adobe After Effects"
+    },
+    {
+      "title": "Airshow Video",
+      "label": "Highlight Video",
+      "desc": "Airshow Video held in Dubai in 2025",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1794223695/AirShow_Video.mp4",
+      "thumb": "",
+      "sec": "44",
+      "aspect": "16/9",
+      "duration": "0:45",
+      "tools": "Adobe After Effects and DaVinci Resolve"
     },
     {
       "title": "PURPLE 7 SALON OFFERS PROMO",
