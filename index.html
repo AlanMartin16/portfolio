@@ -5,41 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ALAN MARTIN | Video Editor & Motion Designer</title>
 
-  <!-- Tailwind CSS CDN (Pinned to v3.4.3 to bypass cache/ISP blocks) -->
-  <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+  <!-- Styling is built into tailwind.css (no outside link needed) -->
+  <link rel="stylesheet" href="tailwind.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      safelist: [
-        'bg-pink-500/20', 'text-pink-300', 'border-pink-500/30',
-        'bg-brand-cyan/20', 'text-cyan-300', 'border-brand-cyan/30',
-        'h-[68vh]', 'sm:h-[72vh]', 'max-w-[90vw]', 'aspect-[9/16]',
-        'aspect-video', 'max-w-4xl', 'object-contain', 'object-cover',
-        'my-2', 'p-2', 'sm:p-4', 'w-auto'
-      ],
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              black: '#06070a', dark: '#0c0d15', card: '#11121d', border: '#202234',
-              violet: '#8b5cf6', cyan: '#06b6d4', pink: '#ec4899', amber: '#f59e0b'
-            }
-          },
-          fontFamily: {
-            headline: ['"Bebas Neue"', 'sans-serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
-          }
-        }
-      }
-    };
-  </script>
 
   <style>
     ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -72,12 +45,12 @@
       <a href="#hero" class="flex items-center gap-3 group">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-violet via-pink-500 to-brand-cyan p-[1.5px] transition-transform duration-300 group-hover:scale-105 shadow-lg shadow-violet-900/30">
           <div class="w-full h-full bg-brand-dark rounded-xl flex items-center justify-center">
-            <span class="font-headline text-2xl text-white tracking-wider">AM</span>
+            <span class="font-headline text-2xl text-white tracking-wider" data-t="brand_initials">AM</span>
           </div>
         </div>
         <div>
-          <div class="font-headline text-2xl tracking-wider text-white flex items-center gap-1">ALAN MARTIN<span class="text-brand-cyan">.</span></div>
-          <p class="text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1">Video Editor • Motion • Color</p>
+          <div class="font-headline text-2xl tracking-wider text-white flex items-center gap-1"><span data-t="brand_name">ALAN MARTIN</span><span class="text-brand-cyan">.</span></div>
+          <p class="text-[10px] font-mono tracking-widest text-gray-400 uppercase -mt-1" data-t="brand_tagline">Video Editor • Motion • Color</p>
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-8 font-medium text-xs tracking-wider uppercase text-gray-300">
@@ -87,7 +60,7 @@
         <a href="#contact" class="hover:text-white hover:text-brand-cyan transition-colors">Contact</a>
       </nav>
       <div class="flex items-center gap-3">
-        <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-pink-600/15 hover:bg-pink-600/30 text-pink-300 border border-pink-500/30 transition-all"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+        <a data-href="instagram_url" href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-pink-600/15 hover:bg-pink-600/30 text-pink-300 border border-pink-500/30 transition-all"><i class="fa-brands fa-instagram"></i><span>Instagram</span></a>
         <a href="#contact" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide bg-gradient-to-r from-brand-violet via-purple-500 to-brand-cyan hover:brightness-110 text-white shadow-lg shadow-violet-900/40 transition-all">Get in Touch</a>
         <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-brand-card border border-brand-border text-gray-300 hover:text-white" aria-label="Toggle menu"><i class="fa-solid fa-bars-staggered text-lg"></i></button>
       </div>
@@ -98,7 +71,7 @@
   <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl hidden transition-opacity flex flex-col justify-between p-6">
     <div>
       <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-8">
-        <div class="font-headline text-3xl tracking-wider text-white">ALAN MARTIN<span class="text-brand-cyan">.</span></div>
+        <div class="font-headline text-3xl tracking-wider text-white"><span data-t="brand_name">ALAN MARTIN</span><span class="text-brand-cyan">.</span></div>
         <button onclick="toggleMobileMenu()" class="text-gray-400 hover:text-white text-2xl p-2" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <nav class="flex flex-col gap-6 text-2xl font-headline tracking-widest text-gray-300">
@@ -111,8 +84,8 @@
     <div class="border-t border-brand-border pt-6 flex items-center justify-between text-xs font-mono text-gray-400">
       <span>Alan Martin • Video Portfolio</span>
       <div class="flex gap-4 text-base text-white">
-        <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp text-emerald-400"></i></a>
+        <a data-href="instagram_url" href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+        <a data-href="whatsapp" href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp text-emerald-400"></i></a>
       </div>
     </div>
   </div>
@@ -121,27 +94,27 @@
     <!-- HERO SECTION -->
     <section id="hero" class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
       <div class="flex flex-wrap items-center gap-2.5 mb-8">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md"><i class="fa-solid fa-layer-group text-brand-cyan text-[11px]"></i> 3+ Years Experience</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md"><i class="fa-solid fa-film text-brand-violet text-[11px]"></i> Dynamic Flow & Velocity Edits</span>
-        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-500/40 text-xs font-medium text-emerald-400 backdrop-blur-md"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Open for Freelance Projects</span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md"><i class="fa-solid fa-layer-group text-brand-cyan text-[11px]"></i> <span data-t="hero_badge1">3+ Years Experience</span></span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-card/90 border border-brand-border text-xs font-medium text-gray-300 backdrop-blur-md"><i class="fa-solid fa-film text-brand-violet text-[11px]"></i> <span data-t="hero_badge2">Dynamic Flow & Velocity Edits</span></span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-950/50 border border-emerald-500/40 text-xs font-medium text-emerald-400 backdrop-blur-md"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> <span data-t="hero_badge3">Open for Freelance Projects</span></span>
       </div>
       <div class="relative">
-        <h1 class="hero-title text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold text-white uppercase tracking-tight select-none drop-shadow-2xl">PORTFOLIO</h1>
-        <p class="font-sans text-xl sm:text-2xl md:text-3xl text-gray-300 font-semibold tracking-tight -mt-2 sm:-mt-4 md:-mt-6 mb-8 flex items-center gap-2">Video Editor & Motion Designer</p>
+        <h1 class="hero-title text-6xl sm:text-8xl md:text-9xl lg:text-[12rem] font-bold text-white uppercase tracking-tight select-none drop-shadow-2xl" data-t="hero_title">PORTFOLIO</h1>
+        <p class="font-sans text-xl sm:text-2xl md:text-3xl text-gray-300 font-semibold tracking-tight -mt-2 sm:-mt-4 md:-mt-6 mb-8 flex items-center gap-2" data-t="hero_subtitle">Video Editor & Motion Designer</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 mb-10 max-w-2xl">
         <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
           <div class="w-11 h-11 rounded-xl bg-pink-500/15 border border-pink-500/30 text-pink-400 flex items-center justify-center text-xl"><i class="fa-brands fa-instagram"></i></div>
-          <div><div class="text-sm font-bold text-white">Instagram Reels</div><div class="text-[11px] text-gray-400 font-mono">9:16 Vertical High Retention</div></div>
+          <div><div class="text-sm font-bold text-white" data-t="hero_card1_title">Instagram Reels</div><div class="text-[11px] text-gray-400 font-mono" data-t="hero_card1_sub">9:16 Vertical High Retention</div></div>
         </div>
         <div class="glass-card p-4 rounded-2xl flex items-center gap-3">
           <div class="w-11 h-11 rounded-xl bg-brand-cyan/15 border border-brand-cyan/30 text-brand-cyan flex items-center justify-center text-xl"><i class="fa-solid fa-palette"></i></div>
-          <div><div class="text-sm font-bold text-white">DaVinci Color Science</div><div class="text-[11px] text-gray-400 font-mono">Node-Based Film Emulation</div></div>
+          <div><div class="text-sm font-bold text-white" data-t="hero_card2_title">DaVinci Color Science</div><div class="text-[11px] text-gray-400 font-mono" data-t="hero_card2_sub">Node-Based Film Emulation</div></div>
         </div>
       </div>
       <div class="flex flex-wrap items-center gap-4">
-        <a href="#videos" class="px-8 py-4 rounded-xl bg-white text-black hover:bg-gray-100 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2 shadow-xl hover:scale-[1.02]"><i class="fa-solid fa-play text-brand-violet text-sm"></i> Watch Videos</a>
-        <a href="#gallery" class="px-8 py-4 rounded-xl glass-card text-white hover:bg-white/10 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2"><i class="fa-solid fa-images text-brand-cyan"></i> View Photo Stacks</a>
+        <a href="#videos" class="px-8 py-4 rounded-xl bg-white text-black hover:bg-gray-100 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2 shadow-xl hover:scale-[1.02]"><i class="fa-solid fa-play text-brand-violet text-sm"></i> <span data-t="hero_btn1">Watch Videos</span></a>
+        <a href="#gallery" class="px-8 py-4 rounded-xl glass-card text-white hover:bg-white/10 font-headline text-xl tracking-wider uppercase transition-all flex items-center gap-2"><i class="fa-solid fa-images text-brand-cyan"></i> <span data-t="hero_btn2">View Photo Stacks</span></a>
       </div>
     </section>
 
@@ -149,22 +122,22 @@
     <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-brand-border/50">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div class="lg:col-span-4">
-          <h2 class="font-headline text-7xl sm:text-8xl md:text-9xl text-white leading-none">ABOUT</h2>
+          <h2 class="font-headline text-7xl sm:text-8xl md:text-9xl text-white leading-none" data-t="about_title">ABOUT</h2>
           <div class="mt-6 flex flex-col gap-3 font-mono text-xs text-gray-400">
-            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase">Primary NLE Suites</span><span class="text-white font-semibold">DaVinci Resolve Studio & Premiere Pro</span></div>
-            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase">Motion & VFX</span><span class="text-white font-semibold">Adobe After Effects & Dynamic Typography</span></div>
+            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase" data-t="about_box1_label">Primary NLE Suites</span><span class="text-white font-semibold" data-t="about_box1_value">DaVinci Resolve Studio & Premiere Pro</span></div>
+            <div class="p-3.5 rounded-xl glass-card"><span class="text-gray-400 block text-[10px] uppercase" data-t="about_box2_label">Motion & VFX</span><span class="text-white font-semibold" data-t="about_box2_value">Adobe After Effects & Dynamic Typography</span></div>
           </div>
         </div>
         <div class="lg:col-span-8 space-y-6 text-sm sm:text-base leading-relaxed">
           <div class="p-8 rounded-2xl glass-card space-y-5">
-            <div class="font-mono text-xs text-brand-cyan font-bold tracking-wider">// CREATIVE PROFILE</div>
-            <p class="text-gray-200 text-lg leading-relaxed font-medium">Backed by over 3 years of hands-on production experience, <strong class="text-white">Alan Martin</strong> delivers as a dedicated <strong class="text-white">Video Editor and Motion Designer</strong>.</p>
-            <p class="text-gray-300 leading-relaxed">These selected projects embody my core philosophy: where <strong class="text-white">sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism</strong> join together to amplify the emotional depth and narrative impact of any production.</p>
-            <p class="text-gray-400 leading-relaxed">By pairing <strong class="text-white">strategic pacing and velocity curves</strong> with advanced <strong class="text-white">Motion Design and DaVinci Resolve color science</strong>, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.</p>
+            <div class="font-mono text-xs text-brand-cyan font-bold tracking-wider" data-t="about_eyebrow">// CREATIVE PROFILE</div>
+            <p class="text-gray-200 text-lg leading-relaxed font-medium" data-t="about_p1">Backed by over 3 years of hands-on production experience, <strong class="text-white">Alan Martin</strong> delivers as a dedicated <strong class="text-white">Video Editor and Motion Designer</strong>.</p>
+            <p class="text-gray-300 leading-relaxed" data-t="about_p2">These selected projects embody my core philosophy: where <strong class="text-white">sharp visual aesthetics, precise rhythmic pacing, and relentless dynamism</strong> join together to amplify the emotional depth and narrative impact of any production.</p>
+            <p class="text-gray-400 leading-relaxed" data-t="about_p3">By pairing <strong class="text-white">strategic pacing and velocity curves</strong> with advanced <strong class="text-white">Motion Design and DaVinci Resolve color science</strong>, every cut is engineered to hook viewers within seconds and sustain maximum engagement throughout.</p>
             <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs border-t border-brand-border/60">
-              <div><span class="text-gray-400 block text-[10px]">EXPERIENCE</span><span class="text-white font-semibold">3+ Years</span></div>
-              <div><span class="text-gray-400 block text-[10px]">COLOR PIPELINE</span><span class="text-brand-cyan font-semibold">DaVinci / ACES</span></div>
-              <div><span class="text-gray-400 block text-[10px]">DELIVERY</span><span class="text-emerald-400 font-semibold">Socials & 4K Masters</span></div>
+              <div><span class="text-gray-400 block text-[10px]" data-t="stat1_label">EXPERIENCE</span><span class="text-white font-semibold" data-t="stat1_value">3+ Years</span></div>
+              <div><span class="text-gray-400 block text-[10px]" data-t="stat2_label">COLOR PIPELINE</span><span class="text-brand-cyan font-semibold" data-t="stat2_value">DaVinci / ACES</span></div>
+              <div><span class="text-gray-400 block text-[10px]" data-t="stat3_label">DELIVERY</span><span class="text-emerald-400 font-semibold" data-t="stat3_value">Socials & 4K Masters</span></div>
             </div>
           </div>
         </div>
@@ -174,9 +147,9 @@
     <!-- FEATURED VIDEOS SECTION (cards are loaded from data.json by loader.js) -->
     <section id="videos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand-border/50">
       <div class="mb-12">
-        <span class="font-mono text-xs uppercase tracking-widest text-brand-violet font-semibold">// TIMELINE SELECTS</span>
-        <h2 class="font-headline text-5xl sm:text-6xl md:text-7xl text-white tracking-wide mt-1">FEATURED VIDEOS</h2>
-        <p class="text-sm text-gray-400 mt-1">Direct master streams and borderless video playback.</p>
+        <span class="font-mono text-xs uppercase tracking-widest text-brand-violet font-semibold" data-t="videos_eyebrow">// TIMELINE SELECTS</span>
+        <h2 class="font-headline text-5xl sm:text-6xl md:text-7xl text-white tracking-wide mt-1" data-t="videos_title">FEATURED VIDEOS</h2>
+        <p class="text-sm text-gray-400 mt-1" data-t="videos_sub">Direct master streams and borderless video playback.</p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="video-grid"><p class="text-sm text-gray-500 font-mono col-span-full">Loading videos...</p></div>
     </section>
@@ -185,8 +158,8 @@
     <section id="gallery" class="py-24 border-t border-white/5 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="text-center max-w-2xl mx-auto mb-16">
-          <p class="text-xs uppercase tracking-[0.3em] text-cyan-400 font-mono mb-2">Graded Stills & Stacks</p>
-          <h2 class="font-headline text-6xl md:text-8xl tracking-wide text-white">PHOTO GALLERY</h2>
+          <p class="text-xs uppercase tracking-[0.3em] text-cyan-400 font-mono mb-2" data-t="gallery_eyebrow">Graded Stills & Stacks</p>
+          <h2 class="font-headline text-6xl md:text-8xl tracking-wide text-white" data-t="gallery_title">PHOTO GALLERY</h2>
           <p class="text-xs sm:text-sm text-zinc-400 mt-2 font-mono"><span class="text-brand-cyan">Single tap</span> to view full uncropped &bull; <span class="text-brand-violet">Double tap</span> to send to back</p>
         </div>
         <div class="relative w-full max-w-2xl mx-auto min-h-[460px] md:min-h-[520px] flex items-center justify-center select-none">
@@ -216,20 +189,20 @@
     <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 border-t border-brand-border/50">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
         <div class="lg:col-span-5 space-y-6">
-          <span class="font-mono text-xs uppercase tracking-widest text-brand-cyan font-semibold">// START A COLLABORATION</span>
-          <h2 class="font-headline text-5xl sm:text-6xl text-white">GET IN TOUCH</h2>
-          <p class="text-gray-300 text-sm sm:text-base leading-relaxed">Need a dynamic flow edit, viral vertical cut, or a master color grade? Send over your project details, deadlines, and footage links.</p>
+          <span class="font-mono text-xs uppercase tracking-widest text-brand-cyan font-semibold" data-t="contact_eyebrow">// START A COLLABORATION</span>
+          <h2 class="font-headline text-5xl sm:text-6xl text-white" data-t="contact_title">GET IN TOUCH</h2>
+          <p class="text-gray-300 text-sm sm:text-base leading-relaxed" data-t="contact_text">Need a dynamic flow edit, viral vertical cut, or a master color grade? Send over your project details, deadlines, and footage links.</p>
           <div class="space-y-4 pt-2">
             <div class="p-4 rounded-xl glass-card flex items-center justify-between">
               <div>
                 <span class="block text-[10px] font-mono text-gray-400 uppercase">Direct Email</span>
-                <span id="alan-email" class="text-white font-mono font-semibold text-sm">alanmartin.edits@gmail.com</span>
+                <span id="alan-email" data-t="email" class="text-white font-mono font-semibold text-sm">alanmartin.edits@gmail.com</span>
               </div>
               <button onclick="copyAlanEmail()" id="email-copy-btn" class="px-3 py-1.5 rounded-lg bg-brand-border/80 hover:bg-brand-violet hover:text-white text-xs font-mono transition-colors flex items-center gap-1.5"><i class="fa-regular fa-clone"></i><span id="copy-status">Copy</span></button>
             </div>
             <div class="flex items-center gap-3 pt-2">
-              <a href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-pink-400 hover:border-pink-500 hover:bg-pink-600/10 text-xs font-mono transition-all"><i class="fa-brands fa-instagram text-base"></i><span>Instagram Profile</span></a>
-              <a href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-emerald-400 hover:border-emerald-500 hover:bg-emerald-600/10 text-xs font-mono transition-all"><i class="fa-brands fa-whatsapp text-base"></i><span>Chat on WhatsApp</span></a>
+              <a data-href="instagram_url" href="https://www.instagram.com/syfics.ae/" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-pink-400 hover:border-pink-500 hover:bg-pink-600/10 text-xs font-mono transition-all"><i class="fa-brands fa-instagram text-base"></i><span>Instagram Profile</span></a>
+              <a data-href="whatsapp" href="https://wa.me/919746217953?text=Hi%20Alan,%20I'd%20like%20to%20discuss%20a%20video%20project" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl glass-card flex items-center justify-center gap-2 text-emerald-400 hover:border-emerald-500 hover:bg-emerald-600/10 text-xs font-mono transition-all"><i class="fa-brands fa-whatsapp text-base"></i><span>Chat on WhatsApp</span></a>
             </div>
           </div>
         </div>
@@ -257,7 +230,7 @@
   <footer class="py-12 border-t border-brand-border/60 bg-brand-black/90 relative z-10 text-center">
     <div class="max-w-7xl mx-auto px-6 flex flex-col items-center justify-center gap-3">
       <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-violet animate-pulse"></span><span class="w-2 h-2 rounded-full bg-brand-cyan"></span></div>
-      <p class="text-xs uppercase tracking-widest text-gray-400 font-mono">© 2026 ALAN MARTIN. ALL RIGHTS RESERVED.</p>
+      <p class="text-xs uppercase tracking-widest text-gray-400 font-mono" data-t="footer_text">© 2026 ALAN MARTIN. ALL RIGHTS RESERVED.</p>
     </div>
   </footer>
 
