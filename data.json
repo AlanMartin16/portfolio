@@ -4,11 +4,11 @@
       "title": "Talking-Head Video",
       "label": "",
       "desc": "",
-      "url": "https://player.cloudinary.com/embed/?cloud_name=qnfityal&public_id=Sample_Video",
+      "url": "https://res.cloudinary.com/qnfityal/video/upload/v1795271367/Sample_Video.mov",
       "thumb": "",
-      "sec": "2",
+      "sec": "13",
       "aspect": "9/16",
-      "duration": "",
+      "duration": "0:13",
       "tools": "Adobe After Effects and DaVinci Resolve"
     },
     {
